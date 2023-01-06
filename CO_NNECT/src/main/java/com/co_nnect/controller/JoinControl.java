@@ -1,6 +1,8 @@
 package com.co_nnect.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +34,18 @@ public class JoinControl extends HttpServlet {
 		// insert, update, delete 와 같은 db에 직접적으로 수정을 가하는 것들은 반환타입이 int 이다. 기억할 것.
 		int cnt = new UserDAO().insertUser(vo);
 		
-		
+		// 포워딩방식 joinSuccess.jsp로 이동 -> email을 request영역에 저장
+				RequestDispatcher rd = request.getRequestDispatcher("WelcomeJoin.jsp");
+				request.setAttribute("email", email);
+				request.setAttribute("id", id);
+				rd.forward(request, response);
+				
+				if(cnt>0) {
+					System.out.println("회원가입 성공");
+				}else {
+					System.out.println("회원가입 실패");
+					response.sendRedirect("login.jsp");
+				}
 		
 		
 		

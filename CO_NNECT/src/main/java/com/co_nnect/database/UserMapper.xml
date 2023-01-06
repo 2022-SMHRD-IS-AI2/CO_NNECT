@@ -16,8 +16,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 필드값 가져오기 #{} -->
 	</insert>
 	
-	
-	
  	<select id="selectOne" resultType="com.co_nncet.model.UserVO" parameterType="com.co_nncet.model.UserVO">
 	select * from messagemember where email=#{email} and pw=#{pw}
 	</select> 
