@@ -1,3 +1,7 @@
 /target/
 .DS_Store
+<<<<<<< HEAD
 ../GitTest/
+=======
+../GitTest
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI2/CO_NNECT.git
