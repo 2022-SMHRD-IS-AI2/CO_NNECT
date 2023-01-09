@@ -10,8 +10,28 @@
   	<description></description>
   	<servlet-class>com.co_nnect.controller.JoinControl</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>emailCheckControl</servlet-name>
+  	<display-name>emailCheckControl</display-name>
+  	<description></description>
+  	<servlet-class>com.co_nnect.controller.emailCheckControl</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>idCheckControl</servlet-name>
+  	<display-name>idCheckControl</display-name>
+  	<description></description>
+  	<servlet-class>com.co_nnect.controller.idCheckControl</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>JoinControl</servlet-name>
   	<url-pattern>/JoinControl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>emailCheckControl</servlet-name>
+  	<url-pattern>/emailCheckControl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>idCheckControl</servlet-name>
+  	<url-pattern>/idCheckControl</url-pattern>
   </servlet-mapping>
 </web-app>

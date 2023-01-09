@@ -24,7 +24,7 @@ public class JoinControl extends HttpServlet {
 		// 처음에 회원가입 시 입력받는 정보(FORM태그 내에서 입력받는 정보) 가져오기
 		String email = request.getParameter("email");
 		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+		String pw = request.getParameter("finalPw");
 		String nick = request.getParameter("nick");
 		
 		// 해당 유저 가입정보 데이터베이스로 보낼 UserVO 객체 생성
@@ -44,7 +44,7 @@ public class JoinControl extends HttpServlet {
 					System.out.println("회원가입 성공");
 				}else {
 					System.out.println("회원가입 실패");
-					response.sendRedirect("login.jsp");
+					response.sendRedirect("login.html");
 				}
 		
 		

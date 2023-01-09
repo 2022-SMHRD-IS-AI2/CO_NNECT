@@ -10,6 +10,8 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="./assets/css/style.css">
 	<link rel="stylesheet" href="./assets/css/join.css">
+	<script src="./assets/jquery/jquery-3.6.3.js"></script>
+	<script src="./assets/jquery/jquery-3.6.3.min.js"></script>
 <title>Join us!</title>
 </head>
 <body>
@@ -24,20 +26,27 @@
 				</div>
 				<div class="j_line"></div>
 				<form action="JoinControl" method="post" id="JOIN" class="fc">
-					<input type="text" name="email" placeholder="이메일 주소를 입력하세요">
-					<div class="id_check fb">
-					<input type="text" name="id" placeholder="아이디">
-					<input type="button" name="check" value="중복확인">
-				</div>
-					<input type="text" name="nick" placeholder="사용자 이름">
+					<input type="text" name="email" id="inputE" placeholder="이메일 주소를 입력하세요">
+					<span class="doubleC"></span>
+					<input type="text" name="nick"  id="ifIdClick" placeholder="아이디">
+					<span class="doubleC"></span>
+					<input type="text" name="nick"  id="ifNameClick" placeholder="사용자 이름">
 					<input type="password" name="pw" placeholder="비밀번호">
-					<input type="password" name="pw" placeholder="비밀번호 재확인">
+					<input type="password" name="finalPw" placeholder="비밀번호 재확인">
 					<input type="text" name="field" placeholder="분야 (ex> Front End Developer) ">
 					<a href="#"><input type="submit" value="제출" id="next"></a>
 					<!-- type값 submit으로 바꾸기 -->
 				</form>
 			</div>
 		</div>
+		
+		<!-- 제이쿼리 스크립트 -->
+		
+		
+		<!-- 로그인 애니메이션 스크립트인거같은데 확인 필요 -->
 		<script src="./assets/js/login_join.js"></script>
+		
+		<!-- 중복확인 스크립트 -->
+		<script src="./assets/js/doubleCheck.js"></script>
 </body>
 </html>

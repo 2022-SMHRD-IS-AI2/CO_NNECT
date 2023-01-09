@@ -18,8 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </environments>
 
 <mappers>
-	<mapper resource ="com/co_nncet/database/MemberMapper.xml"/>
-	   <mapper resource ="com/co_nncet/database/BoardMapper.xml"/>
+	<mapper resource ="com/co_nnect/database/UserMapper.xml"/>
+	   <mapper resource ="com/co_nnect/database/BoardMapper.xml"/>
 
 </mappers>
 

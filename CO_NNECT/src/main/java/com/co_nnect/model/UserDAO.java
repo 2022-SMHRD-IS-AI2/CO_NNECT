@@ -3,15 +3,15 @@ package com.co_nnect.model;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.co_nnect.database.SqlSessionManager;
+import com.co_nnect.database.SessionManager;
 
 public class UserDAO {
 	
 	// sql 세션을 생성해줄 factory 생성
-	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
+	SqlSessionFactory sf = SessionManager.getSession();
 	
 	// factory를 사용해서 sql(sql 실행, close(),연결(connection))세션 생성
-	SqlSession sqlSession =sqlSessionFactory.openSession();
+	SqlSession sqlS =sf.openSession();
 	
 	// 회원가입 시 실행될 메서드 선언
 	public int insertUser(UserVO vo) {
@@ -21,15 +21,15 @@ public class UserDAO {
 				
 				
 				// insert(, 넘겨줄 값)
-			 cnt = sqlSession.insert("com.co_nnect.model.UserDAO.insertUser", vo);
-				// 네임 스페이스 = com.co_nncet.model.DAO 아이디값 = insert
+			 cnt = sqlS.insert("com.co_nnect.model.UserDAO.insertUser", vo);
+				// 네임 스페이스 = com.co_nnect.model.DAO 아이디값 = insert
 				
 				if(cnt >0) {
 					// cnt에 값이 담겼을때 commit
-					sqlSession.commit();
+					sqlS.commit();
 				}else {
 					// 입력값이 들어오지 않았을때
-					sqlSession.rollback();
+					sqlS.rollback();
 				}
 				
 				
@@ -38,11 +38,38 @@ public class UserDAO {
 				e.printStackTrace();
 			}finally {
 				
-				sqlSession.close();
+				sqlS.close();
 				// 연결끊기
 			}
 			return cnt;
 	
+	}
+	// 이메일 중복확인
+	public boolean emailDC(String inputE) {
+		
+		boolean checkE=false;
+		try {
+			checkE = sqlS.selectOne("com.co_nnect.model.UserDAO.emailCheck", inputE);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return checkE;
+		
+	}
+	
+	// 아이디 중복확인
+	public boolean idDC(String inputE) {
+		
+		boolean checkE=false;
+		try {
+			checkE = sqlS.selectOne("com.co_nnect.model.UserDAO.idCheck", inputE);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return checkE;
+		
 	}
 	
 	

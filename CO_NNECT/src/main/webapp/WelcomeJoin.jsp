@@ -26,6 +26,10 @@
 				<td>Email : </td>
 				<td><%=email %></td>			
 			</tr>
+			<tr>
+				<td>ID : </td>
+				<td><%=id %></td>			
+			</tr>
 		</table>
 		<a href="login.jsp"><input type="button" value="메인페이지로"></a> </nav>
 	</div>

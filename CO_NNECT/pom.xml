@@ -35,13 +35,6 @@
     	<scope>provided</scope>
     </dependency>
     
-        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>3.1.0</version>
-    <scope>provided</scope>
-</dependency>
 
 <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
 <dependency>
@@ -84,6 +77,12 @@
     <version>2020.4</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.6.3</version>
+</dependency>
 
   </dependencies>
 

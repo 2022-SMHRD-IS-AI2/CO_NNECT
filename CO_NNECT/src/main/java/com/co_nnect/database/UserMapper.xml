@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.co_nncet.model.UserDAO">
+<mapper namespace="com.co_nnect.model.UserDAO">
 
 	<!-- 회원가입 시 유저정보 insert 
 	데이터테이블 열 순서대로 값을 insert 해 준다. 
@@ -11,32 +11,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	회원유형은 왜 들어있는걸까... 의문스럽지만 일단 1byte로 할당되어 있으니
 	user를 뜻하는 U 한 글자를 넣어주기로 했다
 	-->
-	<insert id="insertUser" parameterType="com.co_nncet.model.UserVO">
-	insert into t_member values (#{id},#{pw},#{nick},#{email},sysdate,"U")
+	<insert id="insertUser" parameterType="com.co_nnect.model.UserVO">
+	insert into t_member values (#{id},#{pw},#{nick},#{email},sysdate,'U')
 	<!-- 필드값 가져오기 #{} -->
 	</insert>
 	
- 	<select id="selectOne" resultType="com.co_nncet.model.UserVO" parameterType="com.co_nncet.model.UserVO">
+ 	<!-- <select id="selectOne" resultType="com.co_nnect.model.UserVO" parameterType="com.co_nncet.model.UserVO">
 	select * from messagemember where email=#{email} and pw=#{pw}
 	</select> 
 	
-	<update id="updateMember" parameterType="com.co_nncet.model.UserVO">
+	<update id="updateMember" parameterType="com.co_nnect.model.UserVO">
 		update messagemember set pw=#{pw},tel=#{tel},address=#{address} where email=#{email}
 	</update>
 	
-	 <select id="selectAllMember" resultType="com.co_nncet.model.UserVO">
+	 <select id="selectAllMember" resultType="com.co_nnect.model.UserVO">
 	select * from messagemember where not(email='admin')
 	</select> 
 	
 	<delete id="deleteMember" parameterType="String">
 		delete from messagemember where email=#{email}
-	</delete>
+	</delete> -->
 	
 	<select id="emailCheck" resultType="boolean" parameterType="String" >
 		select case when count(*)>0 then 1
 					else 0
 					end result
-				from messagemember where email=#{email}
+				from t_member where email=#{email}
+	</select>
+		<select id="idCheck" resultType="boolean" parameterType="String" >
+		select case when count(*)>0 then 1
+					else 0
+					end result
+				from t_member where id=#{id}
 	</select>
 
 </mapper>
