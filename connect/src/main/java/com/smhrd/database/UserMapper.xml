@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.model.UserDAO">
+
+	<!-- 회원가입 시 유저정보 insert 
+	데이터테이블 열 순서대로 값을 insert 해 준다. 
+	id, pw, nick, email, 가입일자, 회원유형 순서
+	회원유형은 왜 들어있는걸까... 의문스럽지만 일단 1byte로 할당되어 있으니
+	user를 뜻하는 U 한 글자를 넣어주기로 했다
+	-->
+	<insert id="insertUser" parameterType="com.smhrd.model.UserVO">
+	insert into t_member values (#{id},#{pw},#{nick},#{email},sysdate,'U')
+	<!-- 필드값 가져오기 #{} -->
+	</insert>
+	
+	<!-- 아이디나 이메일 둘 중 하나만 입력해도 로그인 할 수 있게끔 두 개의 쿼리문 준비 -->
+ 	<select id="selectE" resultType="com.smhrd.model.UserVO" parameterType="com.smhrd.model.UserVO">
+	select * from t_member where mem_email=#{email} and mem_pw=#{pw}
+	</select> 
+	
+	<select id="selectI" resultType="com.smhrd.model.UserVO" parameterType="com.smhrd.model.UserVO">
+	select * from t_member where mem_id=#{id} and mem_pw=#{pw}
+	</select> 
+	
+	<select id="emailCheck" resultType="boolean" parameterType="String" >
+		select case when count(*)>0 then 1
+					else 0
+					end result
+				from t_member where MEM_EMAIL=#{email}
+	</select>
+		<select id="idCheck" resultType="boolean" parameterType="String" >
+		select case when count(*)>0 then 1
+					else 0
+					end result
+				from t_member where MEM_ID=#{id}
+	</select>
+
+</mapper>

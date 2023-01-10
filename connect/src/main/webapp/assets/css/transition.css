@@ -1,0 +1,47 @@
+
+
+#page {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.container {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    inset: 0;
+}
+.loader {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background-color: #5f64ca;
+    transform: translatex(0%);
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.1s;
+    will-change: transform;
+}
+.a, .b, .c {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition-property: opacity, visibility;
+    transition-duration: 0.5s;
+    transition-delay: -0.1s;
+    transition-timing-function: ease-in-out;
+    height: 100%;
+}
+.ac {
+    margin: auto;
+}
+[data-route="a"] .a, [data-route="b"] .b, [data-route="c"] .c {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transition: opacity 0.5s ease-in 0.9s;
+}
+.disable-hover, .disable-hover * {
+    pointer-events: none !important;
+    cursor: none;
+    cursor: wait;
+}
