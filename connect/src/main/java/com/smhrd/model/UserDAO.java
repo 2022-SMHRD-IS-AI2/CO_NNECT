@@ -113,9 +113,45 @@ public class UserDAO {
 		
 	}
 	
+	public UserVO setSessionID(String id) {
+		
+		UserVO User = null;
+		
+		try {
 	
+				User = sqlSession.selectOne("com.smhrd.model.UserDAO.setSessionI", id);
+				System.out.println(User.getId());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return User;
+		
+	}
 	
+	public UserVO setSessionEmail(String email) {
+		
+		UserVO User = null;
+		
+		try {
 	
+				User = sqlSession.selectOne("com.smhrd.model.UserDAO.setSessionE", email);
+				System.out.println(User.getId());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return User;
+		
+	}
 	
 	
 

@@ -51,39 +51,44 @@ public class LoginControl extends HttpServlet {
 		if(loginUser != null) {
 			System.out.println("로그인 성공");
 			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", loginUser);
 			
 			// 로그인유지에 체크가 되어있고 이메일로 로그인 했을 경우
 			if(checkLogin!=null) {
-				if(checkLogin.equals("유지") && loginUser.getEmail()!=null) {
+				if(checkLogin.equals("유지") && idEmail.indexOf("@")>0) {
 					
 					// 쿠키 객체 생성, 초 단위 설정하고 바로 전송
 					Cookie Ecookie = new Cookie("loginEmail",loginUser.getEmail());
 					Cookie Ncookie = new Cookie("loginNick",loginUser.getNick());
 					// 유효기간 설정(초 단위)
-					Ecookie.setMaxAge(60*60*24*7); // 일주일
-					Ncookie.setMaxAge(60*60*24*7); // 일주일
+					Ecookie.setMaxAge(60); // 일주일 로 바꿔야함 테스트용으로 30초 해둠
+					Ncookie.setMaxAge(60); // 일주일
 					
 					// 클라이언트에 쿠키 전송
 					response.addCookie(Ecookie);
 					response.addCookie(Ncookie);
 					
+					
+					
 					// 로그인유지에 체크가 되어있고 아이디로 로그인 했을 경우
-				}else if(checkLogin.equals("유지") && loginUser.getId()!=null) {
+				}else if(checkLogin.equals("유지") && idEmail.indexOf("@")<0) {
 					
 					// 쿠키 객체 생성, 초 단위 설정하고 바로 전송
 					Cookie IDcookie = new Cookie("loginId",loginUser.getId());
 					Cookie Ncookie = new Cookie("loginNick",loginUser.getNick());
 					// 유효기간 설정(초 단위)
-					IDcookie.setMaxAge(60*60*24*7); // 일주일
-					Ncookie.setMaxAge(60*60*24*7); // 일주일
+					IDcookie.setMaxAge(60); // 일주일
+					Ncookie.setMaxAge(60); // 일주일
 					
 					// 클라이언트에 쿠키 전송
 					response.addCookie(IDcookie);
 					response.addCookie(Ncookie);
 					
+					
+					
 				}
 			}
-			session.setAttribute("loginUser", loginUser);
+			
 			response.sendRedirect("main.jsp");
 			
 		}else {

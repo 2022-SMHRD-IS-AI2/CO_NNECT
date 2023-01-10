@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="com.smhrd.model.UserVO" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,6 +14,14 @@
 	<title>Document</title>
 </head>
 <body>
+	<%
+	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
+	// System.out.print(loginMember.getAddress());
+	
+	String nick = loginUser.getNick();
+	String email = loginUser.getEmail();
+	%>
+
 	<div class="wrap fc">
 
 
@@ -27,7 +36,7 @@
 				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
 				<li><a href="connection.html"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
 				<li><a href="#"><img src="./assets/img/icons in color/menubar/setting_gr.png"></a></li>
-				<li class="logout"><a href="login.jsp"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li>
+				<!-- <li><a href="#"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li> -->
 			</ul>
 			<!-- side_menu green end -->
 
@@ -36,7 +45,7 @@
 				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/my.png"></a></li>
 				<li><a href="connection.html"><img src="./assets/img/icons in color/menubar/connections.png"></a></li>
 				<li><a href="#"><img src="./assets/img/icons in color/menubar/setting.png"></a></li>
-				<li class="logout"><a href="login.jsp"><img src="./assets/img/icons in color/menubar/exit.png"></a></li>
+				<li id="logout"><a href="#"><img src="./assets/img/icons in color/menubar/exit.png"></a></li>
 			</ul>
 		<!-- side_menu white end -->
 			
@@ -307,13 +316,13 @@
 				<div class="profile_info fc">
 					<div class="info fc">
 						<div class="info_tit">
-							<h1> 홍길동 </h1>
+							<h1> <%=nick %> </h1>
 							<p>Front End Developer</p>
 						</div>
-						<div class="info_fn">안녕하세요. 프론트개발자<br> 홍길동입니다.</div>
+						<div class="info_fn">안녕하세요. 프론트개발자<br> <%=nick %>입니다.</div>
 						<div class="info_skill">#HTML #CSS #JS #PYTHON</div>
 						<ul class="info_email">
-							<li><a href="#"><img src="">gildong@naver.com</a></li>
+							<li><a href="#"><img src=""><%=email %></a></li>
 							<li><a href="#"><img src="">http://www.portfolio.gild.com</a></li>
 						</ul>
 						<ul class="info_sns fc">
@@ -330,7 +339,7 @@
 
 			<div class="dm fc" id="DM">
 				<ul class="dm_tit fa" id="DM_tit">
-					<li><img src="./assets/img/icons in color/message/message.png"><span class="a"> Massage</span></li>
+					<li><img src="./assets/img/icons in color/message/message.png"><span class="a"> Message</span></li>
 					<li>
 						<img src="./assets/img/icons in color/message/Ellipse 12.png">
 						<img src="./assets/img/icons in color/message/Ellipse 12.png">
@@ -394,6 +403,7 @@
 	</div>
 
 	<script src="./assets/js/script.js"></script>
+	<script src="./assets/js/logout.js"></script>
 
 </body>
 </html>

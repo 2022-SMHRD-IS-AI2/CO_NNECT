@@ -1,6 +1,11 @@
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.smhrd.model.UserVO" %>
+<%@page import="com.smhrd.model.UserDAO" %>
+
+<%-- <%@page import="javax.servlet.http.HttpSession" %> --%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,15 +21,25 @@
 	<%
 		// 쿠키 객체 가져오기
 		Cookie[] cookies = request.getCookies();
-		
-		
+	
 		for(Cookie c : cookies){ // for each 문
-		if(c.getName().equals("loginId")){
-			System.out.print(c.getValue());
+		if(c.getName().equals("loginId") && c.getValue()!="default"){
+			/* System.out.print(c.getValue()); */
+			
+			UserDAO dao = new UserDAO();
+			UserVO loginUser = dao.setSessionID(c.getValue());
+			session.setAttribute("loginUser", loginUser);
+			
+			
 			response.sendRedirect("main.jsp");
 			
-		}else if(c.getName().equals("loginEmail")){
-			System.out.print(c.getValue());
+		}else if(c.getName().equals("loginEmail") && c.getValue()!="default"){
+			/* System.out.print(c.getValue()); */
+			
+			UserDAO dao = new UserDAO();
+			UserVO loginUser = dao.setSessionEmail(c.getValue());
+			session.setAttribute("loginUser", loginUser);
+			
 			response.sendRedirect("main.jsp");
 		}
 		
