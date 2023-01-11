@@ -13,10 +13,14 @@
 .c_block{width:95%; height:160px; align-items:center; margin-top:40px; flex-wrap:wrap;}
 .c_profile{width:110px; height:110px; border-radius:100%; border:1px solid #707070; background:#fff;}
 .code_text{width:87%; height:110px; background:#fff; align-items:center; flex-wrap:wrap; padding-bottom:80px;  border:1px solid #707070; border-radius:30px;}
-.c_coding{width:100%; height:110px; border:none; border-radius:30px;}
+.c_coding{width:93%; height:110px; border:none; border-radius:30px;}
 .attach{width:100%; height:30px; display:flex;}
-.attach>li>a{width:100%; height:30px; display:flex; margin-left:40px; align-items: center; opacity:0.5;}
-.attach>li>a>img{display:block; width:30px; margin-right:10px;}
+.attach>div{width:100%; height:30px; display:flex; margin-left:40px; align-items: center; opacity:0.5;}
+.attach>div>img{display:block; width:30px; margin-right:10px;}
+[type="file"]{width:50%}
+form input::file-selector-button {
+        display: none;
+      }
 
 
 .post_wrap{width:100%; height:1450px; padding:20px 0; border-radius:30px;	 margin-top:80px;}

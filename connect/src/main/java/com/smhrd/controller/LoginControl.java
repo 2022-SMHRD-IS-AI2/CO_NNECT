@@ -61,8 +61,8 @@ public class LoginControl extends HttpServlet {
 					Cookie Ecookie = new Cookie("loginEmail",loginUser.getEmail());
 					Cookie Ncookie = new Cookie("loginNick",loginUser.getNick());
 					// 유효기간 설정(초 단위)
-					Ecookie.setMaxAge(60); // 일주일 로 바꿔야함 테스트용으로 30초 해둠
-					Ncookie.setMaxAge(60); // 일주일
+					Ecookie.setMaxAge(60*60); // 일주일 로 바꿔야함 테스트용으로 30초 해둠
+					Ncookie.setMaxAge(60*60); // 일주일
 					
 					// 클라이언트에 쿠키 전송
 					response.addCookie(Ecookie);
@@ -77,8 +77,8 @@ public class LoginControl extends HttpServlet {
 					Cookie IDcookie = new Cookie("loginId",loginUser.getId());
 					Cookie Ncookie = new Cookie("loginNick",loginUser.getNick());
 					// 유효기간 설정(초 단위)
-					IDcookie.setMaxAge(60); // 일주일
-					Ncookie.setMaxAge(60); // 일주일
+					IDcookie.setMaxAge(60*60); // 일주일
+					Ncookie.setMaxAge(60*60); // 일주일
 					
 					// 클라이언트에 쿠키 전송
 					response.addCookie(IDcookie);

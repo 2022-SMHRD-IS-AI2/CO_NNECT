@@ -1,6 +1,8 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@page import="com.smhrd.model.UserVO" %>
+    <%@page import="com.smhrd.model.UserDAO" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,11 +17,79 @@
 </head>
 <body>
 	<%
-	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
-	// System.out.print(loginMember.getAddress());
+	HttpSession exitSession = request.getSession(false);
 	
-	String nick = loginUser.getNick();
-	String email = loginUser.getEmail();
+	String nick = null;
+	String email = null;
+	
+	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
+	UserDAO dao = new UserDAO();
+	
+	if(exitSession!=null && loginUser!=null){
+		System.out.println("세션이 있다");
+		
+		
+		// System.out.print(loginMember.getAddress());
+		
+		nick = loginUser.getNick();
+		email = loginUser.getEmail();
+		
+	}
+	else if(exitSession == null || loginUser == null){
+		System.out.println("자동로그인이라 세션이 없다");
+		// 쿠키 객체 가져오기
+			Cookie[] cookies = request.getCookies();
+		
+		if(cookies!=null){
+			System.out.println("쿠키값이 잇음");
+		}else{
+			System.out.println("쿠키값이 없음");
+		}
+			System.out.println("1");
+			if(cookies!=null){
+				for(Cookie c : cookies){ // for each 문
+					if(c.getName().equals("loginId") && c.getValue()!="default"){
+						System.out.println("2");
+						/* System.out.print(c.getValue()); */
+						System.out.println("아이디 쿠키 존재");
+						
+						
+						loginUser = dao.setSessionID(c.getValue());
+						session.setAttribute("loginUser", loginUser);
+						
+						nick = loginUser.getNick();
+						email = loginUser.getEmail();
+						
+					}else if(c.getName().equals("loginEmail") && c.getValue()!="default"){
+						System.out.println("3");
+						/* System.out.print(c.getValue());*/
+						System.out.println("이메일 쿠키 존재");
+						
+						
+						loginUser = dao.setSessionEmail(c.getValue());
+						session.setAttribute("loginUser", loginUser);
+						
+						nick = loginUser.getNick();
+						email = loginUser.getEmail();
+						
+					}else if(nick==null && email==null){
+						response.sendRedirect("login.jsp");
+					}
+			}
+			}
+				else if(cookies==null){
+					System.out.println("4");
+						System.out.println("쿠키도 세션도 없음");
+						response.sendRedirect("login.jsp");
+					}/* else{
+						response.sendRedirect("login.jsp");
+					} */
+				
+				}else{
+					response.sendRedirect("login.jsp");
+				}
+	
+
 	%>
 
 	<div class="wrap fc">
@@ -64,14 +134,18 @@
 					<div class="c_profile"></div>
 					<!-- c_profile end -->
 					<div class="code_text fb">
-					<textarea class="c_coding fb"></textarea>
-					<ul class="attach">
-						<li><a href="#"><img src="./assets/img/icons/code-solid.svg"><span>Code</span></a></li>
-						<li><a href="#"><img src="./assets/img/icons/image-regular.svg"><span>Photo</span></a></li>
-						<li><a href="#"><img src="./assets/img/icons/video-solid.svg"><span>Video</span></a></li>
-						<li><a href="#"><img src="./assets/img/icons/paperclip-solid.svg"><span>Attach</span></a></li>
-					</ul>
+				<form action="writePostControl" method="post" enctype="multipart/form-data">
+					<textarea class="c_coding fb" name="textContent"></textarea>
+					<label for="file" class="attach">
+					<div><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept="image/*" name="Photo"></div>
+					<div><img src="./assets/img/icons/video-solid.svg"><input type="file" id="video" accept="video/*" name="Video"></div>
+					<!-- <div><img src="./assets/img/icons/paperclip-solid.svg"><input type="file" name="Attach"></div> -->
+					<div><img src="./assets/img/icons/code-solid.svg"><input type="file" name="Code"></div>
+					<div><input type="button"  value="삭제" id="deleteFile" onclick="delFile(this)"></div>
+					<div><input type="submit"  alt="제출"></div>
+					</label>
 					<!-- attach end -->
+				</form>
 				</div>
 					<!-- code text end -->
 				</div>
@@ -404,6 +478,7 @@
 
 	<script src="./assets/js/script.js"></script>
 	<script src="./assets/js/logout.js"></script>
+	<script src="./assets/js/fileUpload.js"></script>
 
 </body>
 </html>
