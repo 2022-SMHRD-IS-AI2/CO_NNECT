@@ -10,6 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 필드값 가져오기 #{} -->
 	</insert>
 	
+		<insert id="uploadImg" parameterType="com.smhrd.model.PostVO">
+	insert into t_board(B_SEQ, B_CONTENT, B_FILE, B_REGDT, MEM_ID, B_CNT, B_LIKES) values (t_board_seq.nextval, #{content},#{filename},sysdate, #{id}, 0,0)
+	<!-- 필드값 가져오기 #{} -->
+	</insert>
+	
 	<!-- 아이디나 이메일 둘 중 하나만 입력해도 로그인 할 수 있게끔 두 개의 쿼리문 준비 -->
  	<select id="selectE" resultType="com.smhrd.model.UserVO" parameterType="com.smhrd.model.UserVO">
 	select * from t_member where mem_email=#{email} and mem_pw=#{pw}

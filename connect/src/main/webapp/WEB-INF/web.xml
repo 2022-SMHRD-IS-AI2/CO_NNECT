@@ -40,6 +40,12 @@
   	<description></description>
   	<servlet-class>com.smhrd.postController.writePostControl</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>getFileNameControl</servlet-name>
+  	<display-name>getFileNameControl</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.postController.getFileNameControl</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
   	<url-pattern>/JoinCon</url-pattern>
@@ -63,5 +69,9 @@
   <servlet-mapping>
   	<servlet-name>writePostControl</servlet-name>
   	<url-pattern>/writePostControl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>getFileNameControl</servlet-name>
+  	<url-pattern>/getFileNameControl</url-pattern>
   </servlet-mapping>
 </web-app>

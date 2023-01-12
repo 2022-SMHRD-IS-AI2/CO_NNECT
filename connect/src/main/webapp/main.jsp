@@ -134,10 +134,13 @@
 					<div class="c_profile"></div>
 					<!-- c_profile end -->
 					<div class="code_text fb">
+						<div id="previewArea">
+							<div id="preview"></div>
+						</div>
 				<form action="writePostControl" method="post" enctype="multipart/form-data">
 					<textarea class="c_coding fb" name="textContent"></textarea>
 					<label for="file" class="attach">
-					<div><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept="image/*" name="Photo"></div>
+					<div><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"></div>
 					<div><img src="./assets/img/icons/video-solid.svg"><input type="file" id="video" accept="video/*" name="Video"></div>
 					<!-- <div><img src="./assets/img/icons/paperclip-solid.svg"><input type="file" name="Attach"></div> -->
 					<div><img src="./assets/img/icons/code-solid.svg"><input type="file" name="Code"></div>
@@ -479,6 +482,7 @@
 	<script src="./assets/js/script.js"></script>
 	<script src="./assets/js/logout.js"></script>
 	<script src="./assets/js/fileUpload.js"></script>
+	<script src="./assets/js/imgpreview.js"></script>
 
 </body>
 </html>

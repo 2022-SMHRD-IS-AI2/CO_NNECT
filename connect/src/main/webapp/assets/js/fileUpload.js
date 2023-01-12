@@ -2,14 +2,41 @@ const myFiles = document.querySelector("#photo");
 const delFiles = document.querySelector("#deleteFile");
 
 let fileNums = 0;
-
+let fileName = null;
 function logFilenames(){
   const fileInput = document.querySelector("#photo");
   const files = fileInput.files;
   const fileListLength = files.length;
   for (let i = 0; i < fileListLength; i++) {
     console.log(files.item(i).name);
+    fileName = files.item(i).name;
   }
+  sendFileName();
+  
+}
+
+/* 파일 이름을 보내주기 */
+
+function sendFileName(){
+	console.log("파일이름 보내기")
+	if (fileName != null){
+	    $.ajax({
+        // 어디로 요청할 것인가? -> 중복확인 폼
+        url : 'getFileNameControl',
+        data : {'imgFileName':fileName},
+        type : 'get',
+        success:function(){
+            console.log("파일이름 전송 완료");
+        
+        },
+        error: function(){
+            alert("통신 실패!!");
+        }
+    });
+	
+	
+}
+	
 }
 
 /* 첨부파일 삭제 */

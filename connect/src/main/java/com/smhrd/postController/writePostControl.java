@@ -56,7 +56,30 @@ public class writePostControl extends HttpServlet {
 		System.out.println("아이디는 "+id);
 		
 		String text = null;
+		PostVO vo = null;
 		
+		// 사진을 첨부했을 경우 판별
+		boolean imgFileName = (boolean)session.getAttribute("fileName");
+		
+		if (imgFileName==true) {
+			System.out.println("사진 이름 받아옴 : "+imgFileName);
+			multi = new MultipartRequest(request,path,maxSize,encoding,rename);
+			filename = URLEncoder.encode(multi.getFilesystemName("Photo"),"UTF-8");
+			text = multi.getParameter("textContent");
+			
+			int cnt=0;
+
+				vo = new PostVO(text, filename, id);
+				cnt = new PostDAO().uploadImg(vo);
+				
+				if(cnt>0) {
+					System.out.println("업로드성공");
+					
+				}else {
+						System.out.println("업로드실패");
+					}
+
+		}
 //		if(imgPath!=null && videoPath==null) {
 //			// 사진을 첨부하고 동영상은 X
 //			multi = new MultipartRequest(request,path,maxSize,encoding,rename);
@@ -69,14 +92,15 @@ public class writePostControl extends HttpServlet {
 //			filename = URLEncoder.encode(multi.getFilesystemName("Video"),"UTF-8");
 //			text = multi.getParameter("textContent");
 //			
-//		}else {
+//		}
+		else {
 			multi = new MultipartRequest(request,path, maxSize, encoding);
 			text = multi.getParameter("textContent");
 			
 //		}
 		
 			
-		PostVO vo = null;
+		
 		int cnt=0;
 		if(filename==null) {
 			
@@ -85,7 +109,7 @@ public class writePostControl extends HttpServlet {
 			
 		}
 		
-		
+		}
 		
 		
 		
