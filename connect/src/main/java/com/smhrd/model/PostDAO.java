@@ -1,5 +1,7 @@
 package com.smhrd.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -77,5 +79,13 @@ public boolean fileIsOk(String inputE) {
 		return checkE;
 		
 	}
+
+public List<PostVO> showTimeline() {
+	
+	List<PostVO> vo = sqlSession.selectList("com.smhrd.model.PostDAO.showTimeline");
+	sqlSession.close();
+	
+	return vo;
+}
 	
 }

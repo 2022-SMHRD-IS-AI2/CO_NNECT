@@ -16,6 +16,8 @@
 	<title>Document</title>
 </head>
 <body>
+
+	<!-- 자동로그인 관련 스크립트릿 -->
 	<%
 	HttpSession exitSession = request.getSession(false);
 	
@@ -91,6 +93,8 @@
 	
 
 	%>
+	
+	
 
 	<div class="wrap fc">
 
@@ -155,12 +159,13 @@
 				<!-- c_block end -->
 
 				<div class="post_wrap">
-					<div class="scroll">
+				<jsp:include page="./timeline.jsp" />
+					<!-- <div class="scroll">
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -169,15 +174,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post1 end -->
+						post1 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -186,15 +191,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post2 end -->
+						post2 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -203,15 +208,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post3 end -->
+						post3 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -220,15 +225,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post4 end -->
+						post4 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -237,15 +242,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post5 end -->
+						post5 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -254,15 +259,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post6 end -->
+						post6 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -271,15 +276,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post7 end -->
+						post7 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -288,15 +293,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post8 end -->
+						post8 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -305,15 +310,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post9 end -->
+						post9 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -322,15 +327,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post10 end -->
+						post10 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -339,15 +344,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post11 end -->
+						post11 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -356,15 +361,15 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post12 end -->
+						post12 end
 
 						<div class="post">
 							<div class="post_code">
 								코드블럭
 							</div>
-							<!-- post_code end -->
+							post_code end
 							<div class="post_tag fb">
 								<p>해시태그</p>
 								<ul class="post_good fa">
@@ -373,12 +378,12 @@
 									<li>슼랩</li>
 								</ul>
 							</div>
-							<!-- post_tag end -->
+							post_tag end
 						</div>
-						<!-- post1 end -->
+						post1 end
 						</div>
-				<!-- scroll end -->
-				</div>
+				scroll end-->
+				</div> 
 				<!-- post_wrap end -->
 			</div>
 			<!-- contents end -->

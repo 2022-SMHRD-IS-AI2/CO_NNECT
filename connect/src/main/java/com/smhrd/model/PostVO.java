@@ -13,8 +13,25 @@ public class PostVO {
 	private String id;
 	private int cnt;
 	private String hashtag;
-	private int like;
+	private int likes;
 	private Clob codeblock;
+	
+	
+	public PostVO(String content, String filename,String id,String hashtag,
+			int like) {
+		
+		
+		this.content = content;
+		this.filename = filename;
+		
+		this.id = id;
+		
+		this.hashtag = hashtag;
+		this.likes = like;
+		
+	}
+	
+	
 	
 	public PostVO(BigDecimal seq, String content, String filename, Timestamp regdt, String id, int cnt, String hashtag,
 			int like, Clob codeblock) {
@@ -26,11 +43,13 @@ public class PostVO {
 		this.id = id;
 		this.cnt = cnt;
 		this.hashtag = hashtag;
-		this.like = like;
+		this.likes = like;
 		this.codeblock = codeblock;
 	}
 	
-	
+	public PostVO() {
+		
+	}
 	// filename -> hashtag if문 작성
 	public PostVO(String content, String filename, String id) {
 		
@@ -121,11 +140,11 @@ public class PostVO {
 	}
 
 	public int getLike() {
-		return like;
+		return likes;
 	}
 
 	public void setLike(int like) {
-		this.like = like;
+		this.likes = like;
 	}
 
 	public Clob getCodeblock() {

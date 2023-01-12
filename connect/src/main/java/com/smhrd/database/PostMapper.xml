@@ -7,46 +7,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="uploadOnlyText" parameterType="com.smhrd.model.PostVO">
 	insert into t_board(B_SEQ, B_CONTENT, B_REGDT, MEM_ID, B_CNT, B_LIKES) values (t_board_seq.nextval, #{content},sysdate, #{id}, 0,0)
-	<!-- 필드값 가져오기 #{} -->
+	
 	</insert>
 	
-		<insert id="uploadImg" parameterType="com.smhrd.model.PostVO">
+	<insert id="uploadImg" parameterType="com.smhrd.model.PostVO">
 	insert into t_board(B_SEQ, B_CONTENT, B_FILE, B_REGDT, MEM_ID, B_CNT, B_LIKES) values (t_board_seq.nextval, #{content},#{filename},sysdate, #{id}, 0,0)
-	<!-- 필드값 가져오기 #{} -->
+	
 	</insert>
 	
-	<!-- 아이디나 이메일 둘 중 하나만 입력해도 로그인 할 수 있게끔 두 개의 쿼리문 준비 -->
- 	<select id="selectE" resultType="com.smhrd.model.UserVO" parameterType="com.smhrd.model.UserVO">
-	select * from t_member where mem_email=#{email} and mem_pw=#{pw}
-	</select> 
-	
-	<select id="selectI" resultType="com.smhrd.model.UserVO" parameterType="com.smhrd.model.UserVO">
-	select * from t_member where mem_id=#{id} and mem_pw=#{pw}
-	</select> 
-	
-	
-	<!-- 아이디 & 이메일 중복검사 -->
-	<select id="emailCheck" resultType="boolean" parameterType="String" >
-		select case when count(*)>0 then 1
-					else 0
-					end result
-				from t_member where MEM_EMAIL=#{email}
-	</select>
-		<select id="idCheck" resultType="boolean" parameterType="String" >
-		select case when count(*)>0 then 1
-					else 0
-					end result
-				from t_member where MEM_ID=#{id}
+	<select id="showTimeline" resultType="com.smhrd.model.PostVO">
+   		select B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board order by b_seq DESC
 	</select>
 	
-	<!-- 자동로그인 시 세션값이 없어 값을 가져올 수 없으므로 아이디 or 이메일과 일치하는 데이터를 찾아 세션 설정을 하기 위한 쿼리문 -->
-	
-	<select id="setSessionE" resultType="com.smhrd.model.UserVO" parameterType="String">
-	select * from t_member where mem_email=#{email}
-	</select> 
-	
-	<select id="setSessionI" resultType="com.smhrd.model.UserVO" parameterType="String">
-	select * from t_member where mem_id=#{id}
-	</select> 
 
 </mapper>

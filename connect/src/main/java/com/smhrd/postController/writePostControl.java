@@ -3,6 +3,7 @@ package com.smhrd.postController;
 import java.io.IOException;
 import java.net.URLEncoder;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +54,9 @@ public class writePostControl extends HttpServlet {
 		UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 		String id = loginUser.getId();
 		
+		if(id==null) {
+			
+		}
 		System.out.println("아이디는 "+id);
 		
 		String text = null;
@@ -111,9 +115,9 @@ public class writePostControl extends HttpServlet {
 		
 		}
 		
-		
-		
-		
+		RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
+		request.setAttribute("requestid", id);
+		rd.forward(request, response);
 		
 		
 		
