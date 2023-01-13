@@ -48,6 +48,7 @@ public class writePostControl extends HttpServlet {
 		// 파일 업로드 -> MultipartRequest -> cos.jar
 		HttpSession session = request.getSession();
 		
+		
 		MultipartRequest multi = null;
 		String filename = null;
 		

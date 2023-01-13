@@ -69,22 +69,27 @@
 					<% if(vo!=null){
             		for(int i=0;i<vo.size();i++){
             		
-            			String textContent = "<p>"+vo.get(i).getContent()+"</p>" ;
-            			session.setAttribute("text", textContent);
+            			String textContent = vo.get(i).getContent() ;
+            			
             		
+            			session.setAttribute("text", textContent);
             		%>
 						
 							
 							<%if(vo.get(i).getFilename()!=null){%>
 							<div class="post">
+							<div class="info_tit2">
+								<div class="c_profile2"></div>
+								<a href=""><h1>닉네임 불러와야함</h1></a>
+							</div>
 							<div class="post_code">
-<%-- 							<% if(i==1){%>
+ 							<% if(i==1){%>
 								<iframe src="https://codesandbox.io/embed/vanilla-vanilla?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     style="width:100%;height:500px; border:0;border-radius: 4px; overflow:hidden;"
      title="Vanilla"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe><% }%> --%>
+   ></iframe><% }%> 
 							</div>
 							<div id="cotent_area">
 							<div class="thisImg">
@@ -95,7 +100,7 @@
 									<span class="close">&times;</span>
 									<img class="modal_content" id="img01">
 								  </div>
-							<div id="text"><c:out escapeXml="false" value="${text}" /></div>
+							<div id="text"><textarea readonly class="c_coding2 fb" name="textContent"><c:out escapeXml="false" value="${text}" /></textarea></div>
 							<!-- cotent_area end -->
 							</div>
 							<div class="post_tag fb">
@@ -117,6 +122,10 @@
 							
 							<%}else{ %>
 							<div class="post">
+							<div class="info_tit2">
+								<div class="c_profile2"></div>
+								<a href=""><h1>닉네임 불러와야함</h1></a>
+							</div>
 							<div class="post_code">
 						<% if(i==13){%>
 								<iframe src="https://codesandbox.io/embed/vanilla-vanilla?fontsize=14&hidenavigation=1&theme=dark"
@@ -127,7 +136,7 @@
    ></iframe><% }%> 
 							</div>
 							<div id="cotent_area">
-							<div id="textnoImg"><c:out escapeXml="false" value="${text}" /></div>
+							<div id="textnoImg"><textarea readonly class="c_coding2 fb" name="textContent"><c:out escapeXml="false" value="${text}" /></textarea></div>
 							</div>
 							<div class="post_tag fb">
 							<%if(vo.get(i).getHashtag()!=null){%>
