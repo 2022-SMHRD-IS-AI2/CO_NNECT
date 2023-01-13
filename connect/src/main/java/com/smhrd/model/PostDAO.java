@@ -66,11 +66,11 @@ public class PostDAO {
 	}
 	
 	
-public boolean fileIsOk(String inputE) {
+public Boolean fileIsOk(String inputE) {
 		
 		
 		
-		boolean checkE=false;
+		Boolean checkE=false;
 		
 		if(inputE!=null) {
 			checkE=true;

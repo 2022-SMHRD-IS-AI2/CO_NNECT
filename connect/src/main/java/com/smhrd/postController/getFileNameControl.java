@@ -19,6 +19,8 @@ public class getFileNameControl extends HttpServlet {
 		
 		
 		String imgFileName = request.getParameter("imgFileName");
+//		String textSended = request.getParameter("sendText");
+//		request.setAttribute("textaccepted", textSended);
 		
 		PostDAO dao = new PostDAO();
 		boolean fileIsExist = dao.fileIsOk(imgFileName);

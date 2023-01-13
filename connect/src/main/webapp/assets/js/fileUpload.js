@@ -1,8 +1,11 @@
 const myFiles = document.querySelector("#photo");
 const delFiles = document.querySelector("#deleteFile");
+/*const sendText = document.querySelector("#sendText");
+const submit = document.querySelector("#submit"); */
 
 let fileNums = 0;
 let fileName = null;
+let text=null;
 function logFilenames(){
   const fileInput = document.querySelector("#photo");
   const files = fileInput.files;
@@ -39,6 +42,29 @@ function sendFileName(){
 	
 }
 
+
+/*function sendText(){
+	console.log("텍스트 보내기")
+		
+	    $.ajax({
+        // 어디로 요청할 것인가? -> 중복확인 폼
+        url : 'getFileNameControl',
+        data : {'sendText':sendText},
+        type : 'get',
+        success:function(){
+            console.log("텍스트 전송 완료");
+            console.log(sendText);
+        
+        },
+        error: function(){
+            alert("통신 실패!!");
+        }
+    });
+	
+	
+
+} */
+
 /* 첨부파일 삭제 */
 function delFile(e){
 	console.log("파일삭제");
@@ -59,3 +85,4 @@ function delFile(e){
 }*/
 // delFiles.addEventListener("click",fileReset);
 myFiles.addEventListener("change", logFilenames);
+/*submit.addEventListener("submit",sendText); */

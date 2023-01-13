@@ -63,9 +63,9 @@ public class writePostControl extends HttpServlet {
 		PostVO vo = null;
 		
 		// 사진을 첨부했을 경우 판별
-		boolean imgFileName = (boolean)session.getAttribute("fileName");
+		Boolean imgFileName = (Boolean)session.getAttribute("fileName");
 		
-		if (imgFileName==true) {
+		if (imgFileName!=null) {
 			System.out.println("사진 이름 받아옴 : "+imgFileName);
 			multi = new MultipartRequest(request,path,maxSize,encoding,rename);
 			filename = URLEncoder.encode(multi.getFilesystemName("Photo"),"UTF-8");
@@ -97,9 +97,10 @@ public class writePostControl extends HttpServlet {
 //			text = multi.getParameter("textContent");
 //			
 //		}
-		else {
+		else{
 			multi = new MultipartRequest(request,path, maxSize, encoding);
 			text = multi.getParameter("textContent");
+			System.out.println(text);
 			
 //		}
 		
