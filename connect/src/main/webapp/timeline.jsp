@@ -70,7 +70,7 @@
             		for(int i=0;i<vo.size();i++){
             		
             			String textContent = vo.get(i).getContent() ;
-            			
+            			String postWriter = vo.get(i).getId();
             		
             			session.setAttribute("text", textContent);
             		%>
@@ -80,7 +80,7 @@
 							<div class="post">
 							<div class="info_tit2">
 								<div class="c_profile2"></div>
-								<a href=""><h1>닉네임 불러와야함</h1></a>
+								<a href=""><h1><%=postWriter %></h1></a>
 							</div>
 							<div class="post_code">
  							<% if(i==1){%>
@@ -124,7 +124,7 @@
 							<div class="post">
 							<div class="info_tit2">
 								<div class="c_profile2"></div>
-								<a href=""><h1>닉네임 불러와야함</h1></a>
+								<a href=""><h1><%=postWriter %></h1></a>
 							</div>
 							<div class="post_code">
 						<% if(i==13){%>
