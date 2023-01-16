@@ -45,5 +45,23 @@ public class ProfileDAO {
 	
 	}
 	
+	public ProfileVO selectProfile(String id) {
+		ProfileVO ProfileUser = null;
+		
+		try {
+
+			ProfileUser = sqlSession.selectOne("com.smhrd.model.ProfileDAO.selectProfile", id);
+			System.out.println(ProfileUser.getId());	
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return ProfileUser;
 	
+	
+}
 }

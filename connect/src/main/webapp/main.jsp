@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"%>
     <%@page import="com.smhrd.model.UserVO" %>
     <%@page import="com.smhrd.model.UserDAO" %>
+    <%@page import="com.smhrd.model.ProfileVO" %>
+    <%@page import="com.smhrd.model.ProfileDAO" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,11 +26,18 @@
 	
 	String nick = null;
 	String email = null;
+	String status = null;
+	String skills = null;
+	String programs = null;
+	String introduction = null;
 	
 	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 	UserDAO dao = new UserDAO();
 	
-	if(exitSession!=null && loginUser!=null){
+	ProfileVO ProfileUser = (ProfileVO)session.getAttribute("loginUserProfile");
+	ProfileDAO dao2 = new ProfileDAO();
+	
+	if(exitSession!=null && loginUser!=null && ProfileUser!=null){
 		System.out.println("세션이 있다");
 		
 		
@@ -36,6 +45,11 @@
 		
 		nick = loginUser.getNick();
 		email = loginUser.getEmail();
+		
+		status = ProfileUser.getStatus();
+		skills = ProfileUser.getSkills();
+		programs = ProfileUser.getPrograms();
+		introduction = ProfileUser.getIntroduction();
 		
 	}
 	else if(exitSession == null || loginUser == null){
@@ -183,10 +197,10 @@
 					<div class="info fc">
 						<div class="info_tit">
 							<h1> <%=nick %> </h1>
-							<p>Front End Developer</p>
+							<p><%=status %></p>
 						</div>
-						<div class="info_fn">안녕하세요. 프론트개발자<br> <%=nick %>입니다.</div>
-						<div class="info_skill">#HTML #CSS #JS #PYTHON</div>
+						<div class="info_fn"><%=introduction %></div>
+						<div class="info_skill"><%=skills %></div>
 						<ul class="info_email">
 							<li><a href="#"><img src=""><%=email %></a></li>
 							<li><a href="#"><img src="">http://www.portfolio.gild.com</a></li>

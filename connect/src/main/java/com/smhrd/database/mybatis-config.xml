@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mappers>
 	<mapper resource ="com/smhrd/database/UserMapper.xml"/>
 	<mapper resource ="com/smhrd/database/PostMapper.xml"/>
+	<mapper resource ="com/smhrd/database/ProfileMapper.xml"/>
 	
 
 </mappers>

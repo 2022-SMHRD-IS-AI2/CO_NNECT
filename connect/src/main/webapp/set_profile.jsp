@@ -47,15 +47,15 @@ String email = loginUser.getEmail();
 			</div>
 	
 			<div class ="setting_l1">
-				<a href="set_link.html"><p2>앱&웹 링크변경<p2></a>
+				<a href="set_link.jsp"><p2>앱&웹 링크변경<p2></a>
 			</div>
 	
 			<div class ="setting_l1">
-				<a href="password_change.html"><p2>비밀번호 변경<p2></a>
+				<a href="password_change.jsp"><p2>비밀번호 변경<p2></a>
 			</div>
 	
 			<div class ="setting_l1">
-				<a href="set_account.html"><p2>계정관리<p2></a>
+				<a href="set_account.jsp"><p2>계정관리<p2></a>
 			</div>
 	
 	

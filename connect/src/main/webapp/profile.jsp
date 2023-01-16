@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.smhrd.model.UserVO" %>
 <%@page import="com.smhrd.model.UserDAO" %>
+<%@page import="com.smhrd.model.ProfileVO" %>
+<%@page import="com.smhrd.model.ProfileDAO" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -30,9 +32,15 @@ String email = loginUser.getEmail();
 	
 	String nick = null;
 	String email = null;
+	String status = null;
+	String skills = null;
+	String programs = null;
+	String introduction = null;
 	
 	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 	UserDAO dao = new UserDAO();
+	ProfileVO ProfileUser = (ProfileVO)session.getAttribute("loginUserProfile");
+	ProfileDAO dao2 = new ProfileDAO();
 	
 	if(exitSession!=null && loginUser!=null){
 		System.out.println("세션이 있다");
@@ -42,6 +50,11 @@ String email = loginUser.getEmail();
 		
 		nick = loginUser.getNick();
 		email = loginUser.getEmail();
+		
+		status = ProfileUser.getStatus();
+		skills = ProfileUser.getSkills();
+		programs = ProfileUser.getPrograms();
+		introduction = ProfileUser.getIntroduction();
 		
 	}
 	else if(exitSession == null || loginUser == null){
@@ -103,7 +116,7 @@ String email = loginUser.getEmail();
 	<div class="wrap fc">
 		<div class="l_wrap">
 			<div class="logo">
-				<img src="" alt="logo넣고 alt 지우기">
+				<img src="./assets/img/logo.png">
 			</div>
 			<!-- logo end -->
 			<ul class="side_menu green">
@@ -137,19 +150,19 @@ String email = loginUser.getEmail();
 				<li>
 					<p>Current status</p>
 					<p>
-						<a href="">Current status을 작성해 주세요.</a>
+						<a href="set_profile.jsp"><%=status %></a>
 					</p>
 				</li>
 				<li>
 					<p>Skills</p>
 					<p>
-						<a href="">Skill을 작성해 주세요.</a>
+						<a href="set_profile.jsp"><%=skills %></a>
 					</p>
 				</li>
 				<li>
 					<p>Programs</p>
 					<p>
-						<a href="">Program을 작성해 주세요.</a>
+						<a href="set_profile.jsp"><%=programs %></a>
 					</p>
 				</li>
 			</ul>
@@ -169,12 +182,20 @@ String email = loginUser.getEmail();
 				<form action="writePostControltoMyProfile" method="post" enctype="multipart/form-data">
 					<textarea class="c_coding fb" name="textContent"></textarea>
 					<label for="file" class="attach">
-					<div><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"></div>
+					
+					<div class ="attach_li"><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"><span>Photo</span></div>
+               <div class ="attach_li"><img src="./assets/img/icons/video-solid.svg"><input type="file" id="video" accept="video/*" name="Video"><span>Video</span></div>
+               <div class ="attach_li"><img src="./assets/img/icons/code-solid.svg"><input type="file" name="Code"><span>Code</span></div>
+ 
+               <div class ="post_ds"><input type="button"  value="삭제" id="deleteFile" onclick="delFile(this)"></div>
+               <div class ="post_ds"><input type="submit"  alt="제출"></div> 
+					
+					<!-- <div><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"></div>
 					<div><img src="./assets/img/icons/video-solid.svg"><input type="file" id="video" accept="video/*" name="Video"></div>
-					<!-- <div><img src="./assets/img/icons/paperclip-solid.svg"><input type="file" name="Attach"></div> -->
+					<div><img src="./assets/img/icons/paperclip-solid.svg"><input type="file" name="Attach"></div>
 					<div><img src="./assets/img/icons/code-solid.svg"><input type="file" name="Code"></div>
 					<div><input type="button"  value="삭제" id="deleteFile" onclick="delFile(this)"></div>
-					<div><input type="submit"  alt="제출"></div>
+					<div><input type="submit"  alt="제출"></div> -->
 					</label>
 					<!-- attach end -->
 				</form>
@@ -202,10 +223,10 @@ String email = loginUser.getEmail();
 					<div class="info fc">
 						<div class="info_tit">
 							<h1> <%=nick %> </h1>
-							<p>Front End Developer</p>
+							<p><%=status %></p>
 						</div>
-						<div class="info_fn">안녕하세요. 프론트개발자<br> <%=nick %>입니다.</div>
-						<div class="info_skill">#HTML #CSS #JS #PYTHON</div>
+						<div class="info_fn"><%=introduction %></div>
+						<div class="info_skill"><%=programs %></div>
 						<ul class="info_email">
 							<li><a href="#"><img src=""><%=email %></a></li>
 							<li><a href="#"><img src="">http://www.portfolio.gild.com</a></li>

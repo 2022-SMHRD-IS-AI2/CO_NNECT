@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+import com.smhrd.model.ProfileDAO;
+import com.smhrd.model.ProfileVO;
 import com.smhrd.model.UserDAO;
 import com.smhrd.model.UserVO;
 
@@ -20,7 +23,7 @@ public class LoginControl extends HttpServlet {
 		
 		// 개인정보와 같은 보안에 충실해야 하는 정보는 POST 방식으로 전송하기에 인코딩을 해줘야한다.
 		request.setCharacterEncoding("UTF-8");
-		
+		HttpSession session = request.getSession();
 		// 로그인 시 입력한 아이디 or 이메일 그리고 비밀번호를 가져온다.
 		
 		String idEmail = request.getParameter("idEmail");
@@ -32,6 +35,9 @@ public class LoginControl extends HttpServlet {
 		
 		UserVO a = new UserVO(idEmail,pw);
 		UserDAO dao = new UserDAO();
+		
+		String id = a.getId();
+		System.out.println("아이디출력 : "+id);
 		
 		UserVO loginUser = null;
 		
@@ -50,8 +56,13 @@ public class LoginControl extends HttpServlet {
 		
 		if(loginUser != null) {
 			System.out.println("로그인 성공");
-			HttpSession session = request.getSession();
+			
+			ProfileDAO dao2 = new ProfileDAO();
+			ProfileVO ProfileUser = dao2.selectProfile(id);
+			
+			
 			session.setAttribute("loginUser", loginUser);
+			session.setAttribute("loginUserProfile", ProfileUser);
 			
 			// 로그인유지에 체크가 되어있고 이메일로 로그인 했을 경우
 			if(checkLogin!=null) {

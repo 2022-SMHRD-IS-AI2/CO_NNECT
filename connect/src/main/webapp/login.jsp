@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.smhrd.model.UserVO" %>
 <%@page import="com.smhrd.model.UserDAO" %>
+    <%@page import="com.smhrd.model.ProfileVO" %>
+    <%@page import="com.smhrd.model.ProfileDAO" %>
 
 <%-- <%@page import="javax.servlet.http.HttpSession" %> --%>
 
@@ -27,6 +29,8 @@
 			/* System.out.print(c.getValue()); */
 			
 			UserDAO dao = new UserDAO();
+			ProfileDAO dao2 = new ProfileDAO();
+			
 			UserVO loginUser = dao.setSessionID(c.getValue());
 			session.setAttribute("loginUser", loginUser);
 			
