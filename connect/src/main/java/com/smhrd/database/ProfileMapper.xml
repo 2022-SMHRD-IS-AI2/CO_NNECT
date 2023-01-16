@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.model.ProfileDAO">
+
+	<!-- 회원가입 시 프로필 기본값 insert
+	
+	나중에 세팅페이지에서 업데이트하기 위함
+	-->
+	<insert id="insertProfile" parameterType="com.smhrd.model.ProfileVO">
+	insert into t_profile(MEM_ID, STATUS, SKILLS, PROGRAMS, INTRODUCTION) values (#{id},#{status},#{skills},#{programs},#{introduction})
+	<!-- 필드값 가져오기 #{} -->
+	</insert>
+	
+
+
+</mapper>

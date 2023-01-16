@@ -93,7 +93,7 @@
 							</div>
 							<div id="cotent_area">
 							<div class="thisImg">
-								<img class="img" src="./file/"<%=vo.get(i).getFilename()%>>
+								<img class="img" src="./file/<%=vo.get(i).getFilename()%>">
 								<p class="guidenceText">클릭하여 원본 보기</p>
 							</div>
 							<div class="modal">

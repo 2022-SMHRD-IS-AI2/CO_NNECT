@@ -1,19 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="com.smhrd.model.UserVO" %>
+<%@page import="com.smhrd.model.UserDAO" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Connect, 모두를 연결하다</title>
 	<link rel="stylesheet" href="./assets/css/style.css">
 	<link rel="stylesheet" href="./assets/css/set_profile.css">
 	<script src="./assets/jquery/jquery-3.6.3.js"></script>
 	<script src="./assets/jquery/jquery-3.6.3.min.js"></script>
 </head>
 <body>
+<%
 
+UserVO loginUser = (UserVO)session.getAttribute("loginUser");
+UserDAO dao = new UserDAO();
+
+String id = loginUser.getId();
+String nick = loginUser.getNick();
+String email = loginUser.getEmail();
+
+%>
 
 	<!-- 정보수정 -->
 
@@ -70,7 +81,7 @@
 						<!-- <img alt="프로필사진" src="./assets/img/필릭스화보.jpg"> -->
 					</div>
 					<ul class="set_id fs">
-						<li>Co-nnect_ID</li>
+						<li><%=id %></li>
 
 						<div class="upload">
 						<button type="button" class = "btn-warning">

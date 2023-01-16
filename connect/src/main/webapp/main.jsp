@@ -142,12 +142,20 @@
 				<form action="writePostControl" method="post" enctype="multipart/form-data">
 					<textarea class="c_coding fb" name="textContent"></textarea>
 					<label for="file" class="attach">
-					<div><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"></div>
+				
+					<div class ="attach_li"><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"><span>Photo</span></div>
+               <div class ="attach_li"><img src="./assets/img/icons/video-solid.svg"><input type="file" id="video" accept="video/*" name="Video"><span>Video</span></div>
+               <div class ="attach_li"><img src="./assets/img/icons/code-solid.svg"><input type="file" name="Code"><span>Code</span></div>
+ 
+               <div class ="post_ds"><input type="button"  value="삭제" id="deleteFile" onclick="delFile(this)"></div>
+               <div class ="post_ds"><input type="submit"  alt="제출"></div> 
+					
+<!--  					<div><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"></div>
 					<div><img src="./assets/img/icons/video-solid.svg"><input type="file" id="video" accept="video/*" name="Video"></div>
-					<!-- <div><img src="./assets/img/icons/paperclip-solid.svg"><input type="file" name="Attach"></div> -->
+					<div><img src="./assets/img/icons/paperclip-solid.svg"><input type="file" name="Attach"></div>
 					<div><img src="./assets/img/icons/code-solid.svg"><input type="file" name="Code"></div>
 					<div><input type="button"  value="삭제" id="deleteFile" onclick="delFile(this)"></div>
-					<div><input type="submit"  alt="제출"></div>
+					<div><input type="submit"  alt="제출"></div> -->
 					</label>
 					<!-- attach end -->
 				</form>

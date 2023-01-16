@@ -1,5 +1,6 @@
 const modal = document.querySelectorAll(".modal");
-const img = document.querySelectorAll(".thisImg");
+const img = document.querySelectorAll(".img");
+const thisimg =document.querySelectorAll(".thisImg");
 const modal_img = document.querySelectorAll(".modal_content");
 const span = document.querySelectorAll(".close");
 
@@ -11,7 +12,7 @@ for(let i=0;i<img.length;i++){
   modal[i].style.display = text;
 }
 	
-	img[i].addEventListener('click', ()=>{
+	thisimg[i].addEventListener('click', ()=>{
 	modalDisplay("block");
 	modal_img[i].src = img[i].src;
 });

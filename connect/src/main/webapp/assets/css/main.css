@@ -14,6 +14,8 @@
 .c_profile{width:110px; height:110px; border-radius:100%; border:1px solid #707070; background:#fff;}
 .code_text{width:87%; background:#fff; align-items:center; flex-wrap:wrap; padding-bottom:20px; border:1px solid #707070; border-radius:30px;}
 .c_coding{width:93%; height:110px; border:none; border-radius:30px;}
+
+
 .attach{width:100%; height:30px; display:flex; padding-top: 20px;}
 .attach>div{width:100%; height:30px; display:flex; margin-left:40px; align-items: center; opacity:0.5;}
 .attach>div>img{display:block; width:30px; margin-right:10px;}
@@ -21,6 +23,53 @@
 form input::file-selector-button {
     display: none;
   }
+  
+  /* 파일 업로드 */
+
+
+
+ .attach{
+    position:relative;
+    padding:0;
+    line-height: 1.5;
+    text-align:left;
+    border:0;
+    overflow: hidden;
+  
+ 
+
+    
+}
+
+
+.attach_li input[type="file"]{
+    cursor:pointer;
+    position:absolute;
+    width:50px;
+   
+    top:0;
+    transform:scale(2);
+    opacity: 0;
+}
+
+.attach_li span{
+   color: #707070;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 18px;
+   margin-top:3px;
+}
+
+.post_ds input{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 18px;
+   background:none;
+
+   
+}
+.attach #deleteFile{
+   margin-left:100px;
+} 
+  
 #previewArea{
 display:flex;
 justify-content:center;
