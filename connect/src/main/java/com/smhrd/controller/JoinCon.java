@@ -36,7 +36,7 @@ public class JoinCon extends HttpServlet {
 		int cnt = dao.insertUser(vo);
 		
 		// 포워딩방식 joinSuccess.jsp로 이동 -> email을 request영역에 저장
-				RequestDispatcher rd = request.getRequestDispatcher("WelcomeJoin.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
 				request.setAttribute("email", email);
 				request.setAttribute("id", id);
 				rd.forward(request, response);
@@ -45,7 +45,7 @@ public class JoinCon extends HttpServlet {
 					System.out.println("회원가입 성공");
 				}else {
 					System.out.println("회원가입 실패");
-					response.sendRedirect("login.html");
+					response.sendRedirect("join.jsp");
 				}
 		
 		

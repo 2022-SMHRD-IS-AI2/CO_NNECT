@@ -45,10 +45,10 @@
 		String id = loginUser.getId();
 		String email = loginUser.getEmail();
 		
-		/* System.out.println("타임라인페이지 세션확인 : "+id); */
+		System.out.println("타임라인페이지 세션확인 : "+id); 
 		
 		/* 작성글을 리스트 형식으로 싹 가져오기 */
-		List<PostVO> vo = new PostDAO().showTimeline();
+		List<PostVO> vo = new PostDAO().showTimelineOnlyMe(id);
 		
 		
 		/* 테스트로 넣었었다
@@ -93,7 +93,7 @@
 							</div>
 							<div id="cotent_area">
 							<div class="thisImg">
-								<img class="img" src="./file/"<%=vo.get(i).getFilename()%>>
+								<img class="img" src="./file/<%=vo.get(i).getFilename()%>">
 								<p class="guidenceText">클릭하여 원본 보기</p>
 							</div>
 							<div class="modal">
@@ -109,9 +109,11 @@
 								<%}else{ %>
 							<p>해시태그</p><%} %>
 							<ul class="post_good fa">
-									<li><img src="./assets/img/like.png"><%=vo.get(i).getLike()%></li>
-									<li><img src="./assets/img/comment.png"></li>
-									<li><img src="./assets/img/scrap.png"></li>
+									<li><img src="./assets/img/post_icons/heart-regular.svg"></li>
+									
+									<li>졓아 <%=vo.get(i).getLike()%></li>
+									<li>댓글</li>
+									<li>슼랩</li>
 								</ul>
 							</div>
 							<!-- post_tag end -->
@@ -142,15 +144,18 @@
 								<%}else{ %>
 								<p>해시태그</p><%} %>
 								<ul class="post_good fa">
-									<li><img src="./assets/img/like.png"><%=vo.get(i).getLike()%></li>
-									<li><img src="./assets/img/comment.png"></li>
-									<li><img src="./assets/img/scrap.png"></li>
+									<li><img src="./assets/img/post_icons/heart-regular.svg"></li>
+									<li>졓아 <%=vo.get(i).getLike()%></li>
+									<li>댓글</li>
+									<li>슼랩</li>
 								</ul>
 							</div>
 							</div>
 							<!-- post_tag end -->
-						 <%} } }%>
-							<%}%>
+						 <%} } }else if(vo.size() == 0){%>
+						 <h1>이런! 아직 작성한 글이 없네요. 세상을 향한 위대한 발자취를 남겨보세요!</h1>
+							<%}
+							}%>
 							
 						</div>
 						

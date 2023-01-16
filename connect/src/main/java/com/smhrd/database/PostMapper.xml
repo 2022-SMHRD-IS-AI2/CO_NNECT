@@ -19,5 +19,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		select B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board order by b_seq DESC
 	</select>
 	
+	<select id="showTimelineOnlyMe" resultType="com.smhrd.model.PostVO" parameterType="String">
+   		select B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board where MEM_ID=#{id} order by b_seq DESC
+	</select>
+	
 
 </mapper>

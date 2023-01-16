@@ -40,6 +40,12 @@
   	<description></description>
   	<servlet-class>com.smhrd.postController.writePostControl</servlet-class>
   </servlet>
+    <servlet>
+  	<servlet-name>writePostControltoMyProfile</servlet-name>
+  	<display-name>writePostControltoMyProfile</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.postController.writePostControltoMyProfile</servlet-class>
+  </servlet>
   <servlet>
   	<servlet-name>getFileNameControl</servlet-name>
   	<display-name>getFileNameControl</display-name>
@@ -73,5 +79,9 @@
   <servlet-mapping>
   	<servlet-name>getFileNameControl</servlet-name>
   	<url-pattern>/getFileNameControl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>writePostControltoMyProfile</servlet-name>
+  	<url-pattern>/writePostControltoMyProfile</url-pattern>
   </servlet-mapping>
 </web-app>

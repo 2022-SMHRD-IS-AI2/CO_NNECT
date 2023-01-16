@@ -1,0 +1,184 @@
+/* 회원가입 */
+.join_us{position:absolute; top:0; left:0; width:100%; height:100vh; overflow:hidden; background:url(../img/background.png) no-repeat 0 -410px;}
+
+.j_us{width:400px; height:650px; padding:40px; border:1px solid #eee; background:#fff; position:absolute; top:0; bottom:0; right:0; left:0; margin:auto; align-items:flex-start; flex-wrap:wrap;}
+.j_logo{width:100%; height:150px;  text-align:center; margin-top:50px;}
+.j_logo>p:first-child{font-size:50px; font-weight:bold;}
+.j_logo>p:last-child{font-size:20px; margin-top:50px;color:#707070;}
+.j_line{width:100%; height:1px; background:#edecfe;}
+#setProfileForm{width:100%; height:340px; align-items:center; flex-wrap:wrap; margin-top:0px;}
+#setProfileForm>input{width:100%; height:50px; box-sizing:border-box; background:#edecfe; padding:0 20px; border-radius:10px;}
+#setProfileForm>input:last-child{margin-top:40px; border-radius:10px; background:#5f64ca; border:none; color:#fff; font-size:18px; cursor:pointer; text-align:center;}
+
+#join_us_close{position:absolute; top:4%; right:8%; font-size:25px; cursor:pointer; opacity:0.3;}
+
+/* 설정 창 */
+
+/* 배경 */
+.join_setting{position:absolute; top:0; left:0; z-index:100; width:100%; height:100vh; overflow:hidden; background:url(../img/background.png) no-repeat 0 -410px; }
+
+/* 폼 배경 */
+.s_us{width:800px; height:650px; padding:40px; border:1px solid #eee; 
+    background:#fff;  float:left; top:0; bottom:0; right:0; left:0; 
+    margin: auto; margin-top: 50px; margin-left: 300px; align-items:flex-start; flex-wrap:wrap;
+}
+
+/* 설정 메뉴바 */
+.setting_menu{
+    width:250px; 
+    height:500px;
+    padding:40px;; 
+    background:#5f64ca; float:left; left:0; flex-wrap:wrap;
+    margin:auto; align-items:flex-start;
+    padding:40px;
+    align-content: center;
+    align-items: center;
+    border-radius: 0 50px 50px 0;
+    margin-top:100px;
+}
+
+.set_m{
+    margin-top:90px;
+}
+.setting_l1>a {
+    width:220px; height:36px; background:#fff; color:#5f64ca; font-size:18px; cursor:pointer; border-radius:25px;
+    text-align:center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left:10px;
+    padding-top:10px;
+
+}
+
+.setting_l1:nth-child(1)>a {
+  color:#B3F5B2;
+
+
+}
+
+.setting_l1>a:hover {
+  
+  color:#B3F5B2; 
+
+}
+
+
+.back .back-white{
+  height:30px;
+  margin-left:10px;
+  position:relative;
+  display:inline-block;
+
+}
+
+.back .back-green{
+  height:30px;
+  margin-left:10px;
+  display:none;
+  position:absolute;
+  z-index:99;
+
+}
+
+
+.back:hover .back-green{
+  display:inline;
+
+}
+div.set_m{
+    margin-top:90px;
+    margin-bottom:50px;
+}
+
+.logo_blank>p{
+    background: #eee;
+    height:50px ;
+    width:50px;
+}
+
+
+#setProfileForm p{font-weight:bold;}
+
+.set_profile{width:100%; height:150px; align-items:center; margin-top:50px;}
+.set_profile>.s_pro{overflow:hidden; margin-left:0; margin-top:20px; width:100px;height:100px; border-radius:100%; display:flex; justify-content:center; align-items:center;}
+/* 프로필 사진 업로드 */
+.set_profile>.s_pro>img{object-fit: cover;width:100%; height:100%; background:#f1f1f1;
+    /* margin-right: 22px; margin-top: 60px; margin-left:80px; */}
+
+/* 프로필 사진 옆 아이디 */
+.set_profile>.set_id{margin-left: 10px; width:680px; height:60px; align-items: flex-end; flex-wrap:wrap; }
+.set_profile>.set_id>li{width:100%; margin-left: 0px;}
+.set_profile>.set_id>li:nth-child(2){width:100%; font-size:12px; align-self: flex-start; padding-top:5px; box-sizing: border-box; color:#5f64ca; font-weight:bold;}
+
+.set_name{width:80%; height:60px; align-items:center;}
+.set_name>p{width:10%; height:60px; text-align: right; line-height:60px;}
+.set_name>input{width:80%; height:40px; background:#edecfe; padding-left:10px; box-sizing:border-box;}
+
+.set_devel{width:80%; height:60px; align-items:center;}
+.set_devel>p{width:10%; height:60px; text-align: right; line-height:60px;}
+.set_devel>input{width:80%; height:40px; background:#edecfe; padding-left:10px; box-sizing:border-box;}
+
+.set_intro{width:80%; height:120px; align-items:center;}
+.set_intro>p{width:10%; height:60px; text-align: right; line-height:60px;}
+.set_intro>textarea{width:80%; height:100px; box-sizing:border-box; overflow:hidden; font-size:13px; padding:10px;}
+
+.set_skill{width:80%; height:60px; align-items:center;}
+.set_skill>p{width:10%; height:60px; text-align: right; line-height:60px;}
+.set_skill>input{width:80%; height:40px; background:#edecfe; padding-left:10px; box-sizing:border-box;}
+
+.set_email{width:80%; height:120px; align-items:flex-start; flex-wrap:wrap;}
+.set_email>p{width:10%; height:80px; text-align: right; line-height:120px;}
+.set_email>.input{width:80%; height:120px; align-items:center; flex-wrap:wrap;}
+.set_email>.input>input:nth-child(1){width:100%; height:40px; background:#edecfe; padding-left:10px; box-sizing:border-box;}
+.set_email>.input>input:nth-child(2){width:100%; height:40px; background:#edecfe; padding-left:10px; box-sizing:border-box;}
+
+.set_sns{width:100%; height:120px; align-items:flex-start; flex-wrap:wrap; margin-top:30px;}
+.set_sns>p{width:10%; height:80px; text-align: right; line-height:120px; font-weight:none;}
+.set_sns>.checkbox{width:60%; height:120px; align-items:center; flex-wrap:wrap;}
+.set_sns>.checkbox>li{display:flex; width:50%;}
+.set_sns>.checkbox>li>input{margin-right:10px;}
+
+.set_profile >a {
+    width:5%;
+}
+.set_profile >a>p {
+    font-size:20px;
+    padding-bottom:120px;
+    font-weight:normal;
+    color:#707070;
+}
+
+
+.set_btn{width:80%; height:90px; align-items:flex-end; } 
+.set_btn>a{margin-left: 350px; width:45%; height:50px; background:#5f64ca; color:#fff; text-align:center; font-size:18px; cursor:pointer; border-radius:10px;}
+.set_btn input{width:45%; height:50px; background:#5f64ca; color:#fff; text-align:center; font-size:18px; cursor:pointer; border-radius:10px;}
+
+#join_setting_close{position:absolute; top:4%; right:8%; font-size:25px; cursor:pointer; opacity:0.3;}
+#join_us_close a {
+    margin-top:100px;
+    /* margin-left:px; */
+}
+
+/* 파일 업로드 */
+
+.btn-warning{
+    position:relative;
+    padding:0;
+    font-size:15px;
+    line-height: 1.5;
+    border-radius:3px;
+    color:#5f64ca;
+    background-color:#fff;
+    text-align:left;
+    border:0;
+    overflow: hidden;
+}
+
+.btn-warning input[type="file"]{
+    cursor:pointer;
+    position:absolute;
+    left:0;
+    top:0;
+    transform:scale(3);
+    opacity: 0;
+}

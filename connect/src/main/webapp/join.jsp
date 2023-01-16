@@ -34,7 +34,7 @@
 					<input type="password" name="pw" id="firstPw" placeholder="비밀번호">
 					<input type="password" name="finalPw" id="finalPw" placeholder="비밀번호 재확인">
 					<span id="checkPw"></span>
-					<input type="text" name="field" id="field" placeholder="분야 (ex> Front End Developer) ">
+					<!-- <input type="text" name="field" id="field" placeholder="분야 (ex> Front End Developer) "> -->
 					<a href="#"><input type="submit" value="제출" id="next"></a>
 					<!-- type값 submit으로 바꾸기 -->
 				</form>

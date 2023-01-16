@@ -17,15 +17,15 @@ const startTransition = () => {
 	appRoot.dataset.route = "a";
 };
 
-nav.addEventListener("click", (e) => {
-	if (e.target.nodeName === "A") {
-		let a = Array.from(nav.children).find((v) => v.closest(".active"));
-		root.classList.add("disable-hover");
-		a.classList.remove("active");
-		e.target.classList.add("active");
-		e.preventDefault();
-	}
-});
+//nav.addEventListener("click", (e) => {
+//	if (e.target.nodeName === "A") {
+//		let a = Array.from(nav.children).find((v) => v.closest(".active"));
+//		root.classList.add("disable-hover");
+//		a.classList.remove("active");
+//		e.target.classList.add("active");
+//		e.preventDefault();
+//	}
+//});
 
 const onRouteClick = (route) => {
 	if (appRoot.dataset.route === route) return;

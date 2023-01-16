@@ -1,5 +1,5 @@
 const modal = document.querySelectorAll(".modal");
-const img = document.querySelectorAll(".img");
+const img = document.querySelectorAll(".thisImg");
 const modal_img = document.querySelectorAll(".modal_content");
 const span = document.querySelectorAll(".close");
 

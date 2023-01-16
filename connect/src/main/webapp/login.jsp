@@ -46,13 +46,17 @@
 		}
 	
 	%>
-<div id="page">
-      <div class="navigation"></div>
-      <div class="loader"></div>
+<!-- login_animate start -->
+
+<div class="animate_wrap">
+ <img src="./assets/img/logo.png" class="animate">
+</div>
+
+<!-- login_fail -->
 
 
-
-
+<!-- login_main start -->
+<div class="all_login_wrap">
 
    <div class="l_bg">
       <img src="./assets/img/login_background_bg.png">
@@ -60,7 +64,7 @@
 
    <div class="wrap fb">
       <div class="logo">
-         <img src="" alt="logo넣고 alt 지우기">
+         <img src="./assets/img/logo.png">
       </div>
       <!-- <div class="side_box">
          <div class="side_line"></div>
@@ -105,8 +109,7 @@
    </div>
    <!-- wrap end -->
 </div>
-
-
+<!-- all_login_wrap end -->
 
 <script src="./assets/js/transition.js"></script>
 

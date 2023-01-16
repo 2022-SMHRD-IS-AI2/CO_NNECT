@@ -1,35 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/connection.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/connection.css">
 	<title>Document</title>
 </head>
 <body>
 	<div class="wrap fc">
 		<div class="l_wrap">
 			<div class="logo">
-				<img src="" alt="logo넣고 alt 지우기">
+				<img src="./assets/img/logo.png">
 			</div>
 			<!-- logo end -->
 			<ul class="side_menu green">
-				<li><a href="main.html"><img src="img/icons in color/menubar/home_gr.png"></a></li>
-				<li><a href="profile.html"><img src="img/icons in color/menubar/my_gr.png"></a></li>
-				<li><a href="profile.html"><img src="img/icons in color/menubar/connections_gr.png"></a></li>
-				<li><a href="#"><img src="img/icons in color/menubar/setting_gr.png"></a></li>
-				<li><a href="login.html"><img src="img/icons in color/menubar/exit_gr.png"></a></li>
+				<li><a href="main.html"><img src="./assets/img/icons in color/menubar/home_gr.png"></a></li>
+				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
+				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
+				<li><a href="#"><img src="./assets/img/icons in color/menubar/setting_gr.png"></a></li>
+				<li><a href="login.html"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li>
 			</ul>
 			<!-- side_menu green end -->
 
 			<ul class="side_menu white">
-				<li><a href="main.html"><img src="img/icons in color/menubar/home.png"></a></li>
-				<li><a href="profile.html"><img src="img/icons in color/menubar/my.png"></a></li>
-				<li><a href="profile.html"><img src="img/icons in color/menubar/connections_gr.png"></a></li>
-				<li><a href="#"><img src="img/icons in color/menubar/setting.png"></a></li>
-				<li><a href="login.html"><img src="img/icons in color/menubar/exit.png"></a></li>
+				<li><a href="main.html"><img src="./assets/img/icons in color/menubar/home.png"></a></li>
+				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/my.png"></a></li>
+				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
+				<li><a href="#"><img src="./assets/img/icons in color/menubar/setting.png"></a></li>
+				<li><a href="login.html"><img src="assets/img/icons in color/menubar/exit.png"></a></li>
 			</ul>
 		<!-- side_menu white end -->
 			
@@ -59,7 +61,7 @@
 				<ul class="invi_profile fb">
 					<li>
 						<ul class="invi_pro fc">
-							<li><img src="img/뀰.jpg"></li>
+							<li><img src="./assets/img/뀰.jpg"></li>
 							<li>박유정<p>Front End Developer</p></li>
 							
 						</ul>
@@ -78,7 +80,7 @@
 				<ul class="invi_profile fb">
 					<li>
 						<ul class="invi_pro fc">
-							<li><img src="img/뀰.jpg"></li>
+							<li><img src="./assets/img/뀰.jpg"></li>
 							<li>김정선<p>Front End Developer</p></li>
 						</ul>
 						<!-- invi_pro end -->
@@ -114,7 +116,7 @@
 					<div class="scroll fa">
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -131,7 +133,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -148,7 +150,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -165,7 +167,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -182,7 +184,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -199,7 +201,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -216,7 +218,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -233,7 +235,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -250,7 +252,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -267,7 +269,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -284,7 +286,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -301,7 +303,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -318,7 +320,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -335,7 +337,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -352,7 +354,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -369,7 +371,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -386,7 +388,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -403,7 +405,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -420,7 +422,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -437,7 +439,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -454,7 +456,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -471,7 +473,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -488,7 +490,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -505,7 +507,7 @@
 		
 						<ul class="follow fc">
 							<li class="f_profile">
-								<img src="img/뀰.jpg">
+								<img src="./assets/img/뀰.jpg">
 							</li>
 							<li class="f_text fc">
 								<ul class="f_title">
@@ -547,10 +549,10 @@
 							<li><a href="#"><img src="">http://www.portfolio.gild.com</a></li>
 						</ul>
 						<ul class="info_sns fc">
-							<li><a href=""><img src="img/icons in color/profile/insta.png"></a></li>
-							<li><a href=""><img src="img/icons in color/profile/facebook.png"></a></li>
-							<li><a href=""><img src="img/icons in color/profile/twitter.png"></a></li>
-							<li><a href=""><img src="img/icons in color/profile/git.png"></a></li>
+							<li><a href=""><img src="./assets/img/icons in color/profile/insta.png"></a></li>
+							<li><a href=""><img src="./assets/img/icons in color/profile/facebook.png"></a></li>
+							<li><a href=""><img src="./assets/img/icons in color/profile/twitter.png"></a></li>
+							<li><a href=""><img src="./assets/img/icons in color/profile/git.png"></a></li>
 						</ul>
 					</div>
 				</div>
@@ -560,11 +562,11 @@
 
 			<div class="dm fc" id="DM">
 				<ul class="dm_tit fa" id="DM_tit">
-					<li><img src="img/icons in color/message/message.png"><span class="a"> Massage</span></li>
+					<li><img src="./assets/img/icons in color/message/message.png"><span class="a"> Massage</span></li>
 					<li>
-						<img src="img/icons in color/message/Ellipse 12.png">
-						<img src="img/icons in color/message/Ellipse 12.png">
-						<img src="img/icons in color/message/Ellipse 12.png">
+						<img src="./assets/img/icons in color/message/Ellipse 12.png">
+						<img src="./assets/img/icons in color/message/Ellipse 12.png">
+						<img src="./assets/img/icons in color/message/Ellipse 12.png">
 					</li>
 				</ul>
 				<div class="f_wrap fc" id="f_wrap">

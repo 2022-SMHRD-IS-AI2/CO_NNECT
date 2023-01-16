@@ -1,3 +1,5 @@
+.all_login_wrap{width:100%; height:100vh; overflow:hidden;}
+
 .wrap{width:100%; height:100vh; overflow:hidden;}
 
 .l_bg{width:100%; height:100vh; position:absolute; top:0; z-index:-10;}
@@ -5,16 +7,13 @@
 
 .l_wrap{width:60%; height:100vh; align-items: center;}
 .bg{width:40%; background:#fff; height:100vh; display:flex; align-items:flex-end;}
-.bg img{width:800px;
-
-
-}
+.bg img{width:800px;}
 
 .login_wrap{width:400px; height:500px;
 
   /* fadein animation */
   opacity: 0;
-  animation: fadeIn 1s ease-in both;
+  animation: fadeIn 1s 1.2s ease-in both;
 
 }
 .l_title>h1{color:#5f64ca; font-size:60px;

@@ -1,8 +1,7 @@
-<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import="com.smhrd.model.UserVO" %>
-    <%@page import="com.smhrd.model.UserDAO" %>
+<%@page import="com.smhrd.model.UserVO" %>
+<%@page import="com.smhrd.model.UserDAO" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,15 +9,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./assets/css/style.css">
-	<link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/transition.css">
-	<script src="./assets/jquery/jquery-3.6.3.js"></script>
-	<script src="./assets/jquery/jquery-3.6.3.min.js"></script>
+	<link rel="stylesheet" href="./assets/css/profile.css">
+<script src="./assets/jquery/jquery-3.6.3.js"></script>
+<script src="./assets/jquery/jquery-3.6.3.min.js"></script>
 	<title>Document</title>
 </head>
 <body>
 
-	<!-- 자동로그인 관련 스크립트릿 -->
+<%-- <%
+UserVO loginUser = (UserVO)session.getAttribute("loginUser");
+UserDAO dao = new UserDAO();
+String nick = loginUser.getNick();
+String email = loginUser.getEmail();
+
+%> --%>
+
+<!-- 자동로그인 관련 스크립트릿 -->
 	<%
 	HttpSession exitSession = request.getSession(false);
 	
@@ -94,33 +100,29 @@
 	
 
 	%>
-	
-	
-
 	<div class="wrap fc">
 		<div class="l_wrap">
 			<div class="logo">
-				<img src="./assets/img/logo.png">
+				<img src="" alt="logo넣고 alt 지우기">
 			</div>
 			<!-- logo end -->
 			<ul class="side_menu green">
-				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home_gr.png"></a></li>
+				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home.png"></a></li>
 				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
 				<li><a href="connection.html"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
 				<li><a href="set_profile.jsp"><img src="./assets/img/icons in color/menubar/setting_gr.png"></a></li>
-				<!-- <li><a href="#"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li> -->
+				<li><a href="login.jsp"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li>
 			</ul>
 			<!-- side_menu green end -->
 
 			<ul class="side_menu white">
-				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home_gr.png"></a></li>
-				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my.png"></a></li>
+				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home.png"></a></li>
+				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
 				<li><a href="connection.html"><img src="./assets/img/icons in color/menubar/connections.png"></a></li>
 				<li><a href="set_profile.jsp"><img src="./assets/img/icons in color/menubar/setting.png"></a></li>
-				<li id="logout"><a href="#"><img src="./assets/img/icons in color/menubar/exit.png"></a></li>
+				<li><a href="login.jsp"><img src="./assets/img/icons in color/menubar/exit.png"></a></li>
 			</ul>
 		<!-- side_menu white end -->
-			
 		</div>
 		<!-- l_wrap end -->
 
@@ -131,6 +133,31 @@
 			</div>
 			<!-- search end -->
 
+			<ul class="mybox fb">
+				<li>
+					<p>Current status</p>
+					<p>
+						<a href="">Current status을 작성해 주세요.</a>
+					</p>
+				</li>
+				<li>
+					<p>Skills</p>
+					<p>
+						<a href="">Skill을 작성해 주세요.</a>
+					</p>
+				</li>
+				<li>
+					<p>Programs</p>
+					<p>
+						<a href="">Program을 작성해 주세요.</a>
+					</p>
+				</li>
+			</ul>
+
+			<div class="git_pool">
+				<jsp:include page="./gitindex.jsp" />
+			</div>
+
 			<div class="contents fc">
 				<div class="c_block fb">
 					<div class="c_profile"></div>
@@ -139,7 +166,7 @@
 						<div id="previewArea">
 							<div id="preview"></div>
 						</div>
-				<form action="writePostControl" method="post" enctype="multipart/form-data">
+				<form action="writePostControltoMyProfile" method="post" enctype="multipart/form-data">
 					<textarea class="c_coding fb" name="textContent"></textarea>
 					<label for="file" class="attach">
 					<div><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"></div>
@@ -157,9 +184,9 @@
 				<!-- c_block end -->
 
 				<div class="post_wrap">
-				<jsp:include page="./timeline.jsp" />
-					
-				</div> 
+
+				<jsp:include page="./profile_timeline.jsp" />
+				</div>
 				<!-- post_wrap end -->
 			</div>
 			<!-- contents end -->
@@ -194,68 +221,72 @@
 			<!-- profile_info end -->
 			</div>
 			<!-- profile_wrap -->
-
-			<div class="dm fc" id="DM">
-				<ul class="dm_tit fa" id="DM_tit">
-					<li><img src="./assets/img/icons in color/message/message.png"><span class="a"> Message</span></li>
-					<li>
-						<img src="./assets/img/icons in color/message/Ellipse 12.png">
-						<img src="./assets/img/icons in color/message/Ellipse 12.png">
-						<img src="./assets/img/icons in color/message/Ellipse 12.png">
-					</li>
-				</ul>
-				<div class="f_wrap fc" id="f_wrap">
-					<div class="dm_text">
-						<div class="txt">
-							<img src="./assets/img/chevron-left-solid.svg">
+			<div class="dm_box fa">
+			<div class="t_logo"><img src="./assets/img/t_logo.png"><span>TISTORY</span></div>
+			<div class="ts_new">N</div>
+		 </div>
+						
+				<div class="dm fc" id="DM">
+					<ul class="dm_tit fa" id="DM_tit">
+						<li><img src="./assets/img/icons in color/message/message.png"><span class="a"> Massage</span></li>
+						<li>
+							<img src="./assets/img/icons in color/message/Ellipse 12.png">
+							<img src="./assets/img/icons in color/message/Ellipse 12.png">
+							<img src="./assets/img/icons in color/message/Ellipse 12.png">
+						</li>
+					</ul>
+					<div class="f_wrap fc" id="f_wrap">
+						<div class="dm_text">
+							<div class="txt">
+								<img src="./assets/img/chevron-left-solid.svg">
+							</div>
+							<div class="chatting">
+								<input name="a" placeholder="채팅을 입력하세요">
+							</div>
 						</div>
-						<div class="chatting">
-							<input name="a" placeholder="채팅을 입력하세요">
-						</div>
+						<div id="dm_fr">
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
+						<ul class="friend fb">
+							<li></li>
+							<li>Co-nnect_ID</li>
+						</ul>
 					</div>
-					<div id="dm_fr">
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
-					<ul class="friend fb">
-						<li></li>
-						<li>Co-nnect_ID</li>
-					</ul>
+					<!-- dm_fr -->
 				</div>
-				<!-- dm_fr -->
-			</div>
-			<!-- f_wrap end -->
-			</div>
-			<!-- dm end -->
+				<!-- f_wrap end -->
+				</div>
+				<!-- dm end -->
 		</div>
 		<!-- r_wrap end -->
 	</div>

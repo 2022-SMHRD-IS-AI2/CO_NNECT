@@ -87,5 +87,13 @@ public List<PostVO> showTimeline() {
 	
 	return vo;
 }
+
+public List<PostVO> showTimelineOnlyMe(String id) {
+	
+	List<PostVO> vo = sqlSession.selectList("com.smhrd.model.PostDAO.showTimelineOnlyMe",id);
+	sqlSession.close();
+	
+	return vo;
+}
 	
 }
