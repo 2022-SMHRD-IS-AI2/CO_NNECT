@@ -22,6 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select * from t_profile inner join t_member on t_member.mem_id = t_profile.mem_id where t_member.mem_email=#{email}
 	</select> 
 	
+	 <select id="selectProfilePic" resultType="String" parameterType="String">
+			select profile_pic from t_profile where mem_id=#{id}
+	</select> 
+	
 	<update id="updateProfilePic" parameterType="com.smhrd.model.PostVO">
 	update t_profile set STATUS=#{status},SKILLS=#{skills}, PROGRAMS=#{programs}, INTRODUCTION=#{introduction}, PROFILE_PIC=#{profile_pic} where MEM_ID=#{id}
 	

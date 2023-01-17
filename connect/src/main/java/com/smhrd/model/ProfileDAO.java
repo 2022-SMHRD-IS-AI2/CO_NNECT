@@ -147,6 +147,28 @@ public Boolean fileIsOk(String inputE) {
 		return checkE;
 		
 	}
+
+public String getProfilePic(String id) {
+	
+	
+	
+	String pic=null;
+	
+	try {
+		
+		pic = sqlSession.selectOne("com.smhrd.model.ProfileDAO.selectProfilePic", id);
+		
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}finally {
+		sqlSession.close();
+	}
+	
+	return pic;
+	
+}
 	
 	
 }

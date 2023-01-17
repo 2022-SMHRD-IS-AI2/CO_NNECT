@@ -103,5 +103,13 @@ public String getMyNick(String id) {
 	
 	return nick;
 }
+
+public String whoIsWriter(int seq) {
+	
+	String id = sqlSession.selectOne("com.smhrd.model.PostDAO.whoIsWriter",seq);
+	sqlSession.close();
+	
+	return id;
+}
 	
 }

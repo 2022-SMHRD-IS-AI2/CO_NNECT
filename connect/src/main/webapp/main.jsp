@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"%>
     <%@page import="com.smhrd.model.UserVO" %>
     <%@page import="com.smhrd.model.UserDAO" %>
+    <%@page import="com.smhrd.model.PostVO" %>
+<%@page import="com.smhrd.model.PostDAO" %>
     <%@page import="com.smhrd.model.ProfileVO" %>
     <%@page import="com.smhrd.model.ProfileDAO" %>
 <!DOCTYPE html>
@@ -24,30 +26,29 @@
 	<%
 	HttpSession exitSession = request.getSession(false);
 	
-	String nick = null;
+	String id = null;
 	String email = null;
-	
 	String status = null;
 	String skills = null;
 	String programs = null;
 	String introduction = null;
+	String profile_pic = null;
+	String nick = null;
 	
 	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 	UserDAO dao = new UserDAO();
 	
-	ProfileDAO dao2 = new ProfileDAO();
-	
-	
 	ProfileVO ProfileUserSession = (ProfileVO)session.getAttribute("loginUserProfile");
+	ProfileDAO dao2 = new ProfileDAO();
+
 	
 	if(exitSession!=null && loginUser!=null/*  && ProfileUser!=null */){
 		System.out.println("세션이 있다");
 		
-		
-		// System.out.print(loginMember.getAddress());
-		
-		nick = loginUser.getNick();
+		id = loginUser.getId();
 		email = loginUser.getEmail();
+		
+		nick = new PostDAO().getMyNick(id);
 		
 		ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 	
@@ -55,6 +56,7 @@
 		skills = ProfileUser.getSkills();
 		programs = ProfileUser.getPrograms();
 		introduction = ProfileUser.getIntroduction();
+		profile_pic = ProfileUser.getProfile_pic();
 		
 	}
 	else if(exitSession == null || loginUser == null){
@@ -63,7 +65,7 @@
 			Cookie[] cookies = request.getCookies();
 		if(loginUser!=null){
 			
-			nick = loginUser.getNick();
+			nick = loginUser.getId();
 			email = loginUser.getEmail();
 			
 			ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
@@ -72,6 +74,7 @@
 			skills = ProfileUser.getSkills();
 			programs = ProfileUser.getPrograms();
 			introduction = ProfileUser.getIntroduction();
+			profile_pic = ProfileUser.getProfile_pic();
 		}
 /* 		if(cookies!=null){
 			System.out.println("쿠키값이 잇음");
@@ -90,15 +93,17 @@
 						loginUser = dao.setSessionID(c.getValue());
 						session.setAttribute("loginUser", loginUser);
 						
-						nick = loginUser.getNick();
+						id = loginUser.getId();
 						email = loginUser.getEmail();
 						
+						nick = new PostDAO().getMyNick(id);
 						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 						
 						status = ProfileUser.getStatus();
 						skills = ProfileUser.getSkills();
 						programs = ProfileUser.getPrograms();
 						introduction = ProfileUser.getIntroduction();
+						profile_pic = ProfileUser.getProfile_pic();
 						
 					}else if(c.getName().equals("loginEmail") && c.getValue()!="default"){
 						System.out.println("3");
@@ -109,15 +114,17 @@
 						loginUser = dao.setSessionEmail(c.getValue());
 						session.setAttribute("loginUser", loginUser);
 						
-						nick = loginUser.getNick();
+						id = loginUser.getId();
 						email = loginUser.getEmail();
 						
+						nick = new PostDAO().getMyNick(id);
 						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 						
 						status = ProfileUser.getStatus();
 						skills = ProfileUser.getSkills();
 						programs = ProfileUser.getPrograms();
 						introduction = ProfileUser.getIntroduction();
+						profile_pic = ProfileUser.getProfile_pic();
 						
 					}else if(nick==null && email==null){
 						System.out.println("여기냐?");
@@ -178,7 +185,9 @@
 
 			<div class="contents fc">
 				<div class="c_block fb">
-					<div class="c_profile"></div>
+					<div class="c_profile">
+					<img src="./profilePic/<%=profile_pic%>">
+					</div>
 					<!-- c_profile end -->
 					<div class="code_text fb">
 						<div id="previewArea">
@@ -222,7 +231,11 @@
 		<div class="r_wrap">
 			<div class="profile_wrap fc">
 				<div class="profile_img">
-					<img src="">프로필
+									<%if(profile_pic!=null){ %>
+					<img src="./profilePic/<%=profile_pic%>">
+					<%} else{%>
+					<img alt="" src="">
+					<%} %>
 				</div>
 				<div class="profile_info fc">
 					<div class="info fc">
@@ -231,7 +244,7 @@
 							<p><%=status %></p>
 						</div>
 						<div class="info_fn"><%=introduction %></div>
-						<div class="info_skill"><%=skills %></div>
+						<div class="info_skill"><%=programs %></div>
 						<ul class="info_email">
 							<li><a href="#"><img src=""><%=email %></a></li>
 							<li><a href="#"><img src="">http://www.portfolio.gild.com</a></li>

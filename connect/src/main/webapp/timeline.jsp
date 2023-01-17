@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
@@ -8,6 +9,8 @@
 <%@page import="com.smhrd.model.UserDAO" %>
 <%@page import="com.smhrd.model.PostVO" %>
 <%@page import="com.smhrd.model.PostDAO" %>
+<%@page import="com.smhrd.model.ProfileVO" %>
+<%@page import="com.smhrd.model.ProfileDAO" %>
 
 <!DOCTYPE html>
 <html>
@@ -28,6 +31,14 @@
 	
 	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 	UserDAO dao = new UserDAO();
+	ProfileVO ProfileUserSession = (ProfileVO)session.getAttribute("loginUserProfile");
+	ProfileDAO dao2 = new ProfileDAO();
+	
+	String status = null;
+	String skills = null;
+	String programs = null;
+	String introduction = null;
+	String profile_pic = null;
 	
 	/* 세션에서 얻어올 유저 정보가 없을 경우 */
 	if(loginUser==null){
@@ -47,6 +58,14 @@
 		
 		/* System.out.println("타임라인페이지 세션확인 : "+id); */
 		
+		ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+		
+		status = ProfileUser.getStatus();
+		skills = ProfileUser.getSkills();
+		programs = ProfileUser.getPrograms();
+		introduction = ProfileUser.getIntroduction();
+		profile_pic = ProfileUser.getProfile_pic();
+		
 		/* 작성글을 리스트 형식으로 싹 가져오기 */
 		List<PostVO> vo = new PostDAO().showTimeline();
 		
@@ -61,6 +80,11 @@
 		System.out.println("vo 자체출력 : "+vo); 
 		
 		*/
+		
+		String path = (String)request.getAttribute("profilePicPath");
+		String path2 = path+"\\";
+		String realPath = path2+profile_pic;
+		System.out.println("진짜경로"+path2+profile_pic);
 	
 	%>
 				
@@ -70,8 +94,15 @@
             		for(int i=0;i<vo.size();i++){
             		
             			String textContent = vo.get(i).getContent() ;
-            			String postWriter = vo.get(i).getId();
-            		
+            			/* String postWriter = vo.get(i).getId(); */
+            			int num = (vo.get(i).getSeq()).intValue();
+            			
+            			String wrtierid = new PostDAO().whoIsWriter(num);
+            			String postWriter = new PostDAO().getMyNick(wrtierid);
+            			String loginNick = new PostDAO().getMyNick(id);
+            			
+            			String userProfilePic = new ProfileDAO().getProfilePic(wrtierid);
+            			
             			session.setAttribute("text", textContent);
             		%>
 						
@@ -79,7 +110,9 @@
 							<%if(vo.get(i).getFilename()!=null){%>
 							<div class="post">
 							<div class="info_tit2">
-								<div class="c_profile2"></div>
+								<div class="c_profile2">
+								<img src="./profilePic/<%=userProfilePic%>">
+								</div>
 								<a href=""><h1><%=postWriter %></h1></a>
 							</div>
 							<div class="post_code">
@@ -117,8 +150,10 @@
 							<!-- post_tag end -->
 													<form action="">
 								<div class="pimgNick2">
-									<div class="profile_img_cmt2"><img src="./assets/img/652583_650587_1823.jpg"></div>
-									<span><%=loginUser.getNick() %></span>
+									<div class="profile_img_cmt2">
+									<img src="./profilePic/<%=profile_pic%>">
+									</div>
+									<span><%=loginNick %></span>
 									
 										<textarea name="commentText" id="commentText"></textarea>
 										
@@ -150,7 +185,9 @@
 							<%}else{ %>
 							<div class="post">
 							<div class="info_tit2">
-								<div class="c_profile2"></div>
+								<div class="c_profile2">
+								<img src="./profilePic/<%=userProfilePic%>">
+								</div>
 								<a href=""><h1><%=postWriter %></h1></a>
 							</div>
 							<div class="post_code">
@@ -178,8 +215,8 @@
 							</div>
 														<form action="">
 								<div class="pimgNick2">
-									<div class="profile_img_cmt2"><img src="./assets/img/652583_650587_1823.jpg"></div>
-									<span>사서(닉네임)</span>
+									<div class="profile_img_cmt2"><img src="./profilePic/<%=profile_pic%>"></div>
+									<span><%=loginNick %></span>
 									
 										<textarea name="" id=""></textarea>
 										

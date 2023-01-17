@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.smhrd.model.UserVO" %>
 <%@page import="com.smhrd.model.UserDAO" %>
+<%@page import="com.smhrd.model.PostVO" %>
+<%@page import="com.smhrd.model.PostDAO" %>
 <%@page import="com.smhrd.model.ProfileVO" %>
 <%@page import="com.smhrd.model.ProfileDAO" %>
 <!DOCTYPE html>
@@ -30,13 +32,14 @@ String email = loginUser.getEmail();
 	<%
 	HttpSession exitSession = request.getSession(false);
 	
-	String nick = null;
+	String id = null;
 	String email = null;
 	String status = null;
 	String skills = null;
 	String programs = null;
 	String introduction = null;
 	String profile_pic = null;
+	String nick = null;
 	
 	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 	UserDAO dao = new UserDAO();
@@ -49,8 +52,10 @@ String email = loginUser.getEmail();
 		
 		// System.out.print(loginMember.getAddress());
 		
-		nick = loginUser.getNick();
+		id = loginUser.getId();
 		email = loginUser.getEmail();
+		
+		nick = new PostDAO().getMyNick(id);
 		
 		ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 		
@@ -82,9 +87,10 @@ String email = loginUser.getEmail();
 						loginUser = dao.setSessionID(c.getValue());
 						session.setAttribute("loginUser", loginUser);
 						
-						nick = loginUser.getNick();
+						id = loginUser.getId();
 						email = loginUser.getEmail();
 						
+						nick = new PostDAO().getMyNick(id);
 						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 						
 						status = ProfileUser.getStatus();
@@ -102,9 +108,10 @@ String email = loginUser.getEmail();
 						loginUser = dao.setSessionEmail(c.getValue());
 						session.setAttribute("loginUser", loginUser);
 						
-						nick = loginUser.getNick();
+						id = loginUser.getId();
 						email = loginUser.getEmail();
 						
+						nick = new PostDAO().getMyNick(id);
 						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 						
 						status = ProfileUser.getStatus();
@@ -211,7 +218,12 @@ String email = loginUser.getEmail();
 					
 					<div class ="attach_li"><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"><span>Photo</span></div>
                <div class ="attach_li"><img src="./assets/img/icons/video-solid.svg"><input type="file" id="video" accept="video/*" name="Video"><span>Video</span></div>
-               <div class ="attach_li"><img src="./assets/img/icons/code-solid.svg"><input type="file" name="Code"><span>Code</span></div>
+               <div class ="attach_li"><img src="./assets/img/icons/code-solid.svg"><select name="score" id="select-id">
+  <option value="Javascript">HTML/CSS/JS</option>
+  <option value="B">B</option>
+  <option value="C">C</option>
+  <option value="D">D</option>
+</select><span>Code</span></div>
  
                <div class ="post_ds"><input type="button"  value="삭제" id="deleteFile" onclick="delFile(this)"></div>
                <div class ="post_ds"><input type="submit"  alt="제출"></div> 
