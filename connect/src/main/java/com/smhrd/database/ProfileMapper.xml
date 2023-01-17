@@ -14,8 +14,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 필드값 가져오기 #{} -->
 	</insert>
 	
-	 <select id="selectProfile" resultType="com.smhrd.model.ProfileVO" parameterType="String">
+	 <select id="selectProfileID" resultType="com.smhrd.model.ProfileVO" parameterType="String">
 			select * from t_profile where mem_id=#{id}
+	</select> 
+	
+	 <select id="selectProfileEMAIL" resultType="com.smhrd.model.ProfileVO" parameterType="String">
+			select * from t_profile inner join t_member on t_member.mem_id = t_profile.mem_id where t_member.mem_email=#{email}
 	</select> 
 	
 

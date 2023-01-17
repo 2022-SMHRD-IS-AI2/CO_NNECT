@@ -36,8 +36,6 @@ public class LoginControl extends HttpServlet {
 		UserVO a = new UserVO(idEmail,pw);
 		UserDAO dao = new UserDAO();
 		
-		String id = a.getId();
-		System.out.println("아이디출력 : "+id);
 		
 		UserVO loginUser = null;
 		
@@ -56,18 +54,40 @@ public class LoginControl extends HttpServlet {
 		
 		if(loginUser != null) {
 			System.out.println("로그인 성공");
+			if(idEmail.indexOf("@")>0) {
+				String email = a.getEmail();
+				System.out.println(email);
+				ProfileDAO dao2 = new ProfileDAO();
+				ProfileVO ProfileUser = dao2.selectProfileEMAIL(email);
+				System.out.println(ProfileUser);
+				
+				session.setAttribute("loginUser", loginUser);
+				session.setAttribute("loginUserProfile", ProfileUser);
+			}else if(idEmail.indexOf("@")<0) {
+				String id = a.getId();
+				System.out.println(id);
+				ProfileDAO dao2 = new ProfileDAO();
+				ProfileVO ProfileUser = dao2.selectProfileID(id);
+				System.out.println(ProfileUser);
+				
+				session.setAttribute("loginUser", loginUser);
+				session.setAttribute("loginUserProfile", ProfileUser);
+				
+			}
 			
-			ProfileDAO dao2 = new ProfileDAO();
-			ProfileVO ProfileUser = dao2.selectProfile(id);
 			
-			
-			session.setAttribute("loginUser", loginUser);
-			session.setAttribute("loginUserProfile", ProfileUser);
 			
 			// 로그인유지에 체크가 되어있고 이메일로 로그인 했을 경우
 			if(checkLogin!=null) {
 				if(checkLogin.equals("유지") && idEmail.indexOf("@")>0) {
+					String email = a.getEmail();
+					System.out.println(email);
+					ProfileDAO dao2 = new ProfileDAO();
+					ProfileVO ProfileUser = dao2.selectProfileEMAIL(email);
+					System.out.println(ProfileUser);
 					
+					session.setAttribute("loginUser", loginUser);
+					session.setAttribute("loginUserProfile", ProfileUser);
 					// 쿠키 객체 생성, 초 단위 설정하고 바로 전송
 					Cookie Ecookie = new Cookie("loginEmail",loginUser.getEmail());
 					Cookie Ncookie = new Cookie("loginNick",loginUser.getNick());
@@ -83,7 +103,14 @@ public class LoginControl extends HttpServlet {
 					
 					// 로그인유지에 체크가 되어있고 아이디로 로그인 했을 경우
 				}else if(checkLogin.equals("유지") && idEmail.indexOf("@")<0) {
+					String id = a.getId();
+					System.out.println(id);
+					ProfileDAO dao2 = new ProfileDAO();
+					ProfileVO ProfileUser = dao2.selectProfileID(id);
+					System.out.println(ProfileUser);
 					
+					session.setAttribute("loginUser", loginUser);
+					session.setAttribute("loginUserProfile", ProfileUser);
 					// 쿠키 객체 생성, 초 단위 설정하고 바로 전송
 					Cookie IDcookie = new Cookie("loginId",loginUser.getId());
 					Cookie Ncookie = new Cookie("loginNick",loginUser.getNick());

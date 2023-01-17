@@ -23,7 +23,8 @@
 	<%
 		// 쿠키 객체 가져오기
 		Cookie[] cookies = request.getCookies();
-	
+	if(cookies!=null){
+		
 		for(Cookie c : cookies){ // for each 문
 		if(c.getName().equals("loginId") && c.getValue()!="default"){
 			/* System.out.print(c.getValue()); */
@@ -48,6 +49,7 @@
 		}
 		
 		}
+	}
 	
 	%>
 <!-- login_animate start -->

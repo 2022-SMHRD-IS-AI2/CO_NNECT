@@ -110,12 +110,41 @@
 							<p>해시태그</p><%} %>
 							<ul class="post_good fa">
 									<li><img src="./assets/img/like.png"><%=vo.get(i).getLike()%></li>
-									<li><img src="./assets/img/comment.png"></li>
+									<li ><img class="cmtBtn" src="./assets/img/comment.png"></li>
 									<li><img src="./assets/img/scrap.png"></li>
 								</ul>
 							</div>
 							<!-- post_tag end -->
-						
+													<form action="">
+								<div class="pimgNick2">
+									<div class="profile_img_cmt2"><img src="./assets/img/652583_650587_1823.jpg"></div>
+									<span><%=loginUser.getNick() %></span>
+									
+										<textarea name="commentText" id="commentText"></textarea>
+										
+									</div>
+								</form>
+								
+							<div class="commentArea">
+								
+								<ul class="commentUl">
+									<li class="commentList">
+										<div class="pimgNick">
+											<div class="profile_img_cmt"><img src="./assets/img/652583_650587_1823.jpg"></div>
+											<span>사서(닉네임)</span>
+											<p>댓글 내용입니다 아 작업하기 존나 싫다 진짜 이게 ㅎ현실임?</p>
+										</div>
+									</li>
+									<li class="commentList">
+										<div class="pimgNick">
+											<div class="profile_img_cmt"><img src="./assets/img/KakaoTalk_20221129_154645668.png"></div>
+											<span>이딴게현실</span>
+											<p>정신차리고 작업이나 해라 이녀석아,,,</p>
+										</div>
+									</li>
+								</ul>
+								
+							</div>
 							</div>
 							
 							<%}else{ %>
@@ -143,9 +172,39 @@
 								<p>해시태그</p><%} %>
 								<ul class="post_good fa">
 									<li><img src="./assets/img/like.png"><%=vo.get(i).getLike()%></li>
-									<li><img src="./assets/img/comment.png"></li>
+									<li ><img class="cmtBtn" src="./assets/img/comment.png"></li>
 									<li><img src="./assets/img/scrap.png"></li>
 								</ul>
+							</div>
+														<form action="">
+								<div class="pimgNick2">
+									<div class="profile_img_cmt2"><img src="./assets/img/652583_650587_1823.jpg"></div>
+									<span>사서(닉네임)</span>
+									
+										<textarea name="" id=""></textarea>
+										
+									</div>
+								</form>
+								
+							<div class="commentArea">
+								
+								<ul class="commentUl">
+									<li class="commentList">
+										<div class="pimgNick">
+											<div class="profile_img_cmt"><img src="./assets/img/652583_650587_1823.jpg"></div>
+											<span>사서(닉네임)</span>
+											<p>댓글 내용입니다 아 작업하기 존나 싫다 진짜 이게 ㅎ현실임?</p>
+										</div>
+									</li>
+									<li class="commentList">
+										<div class="pimgNick">
+											<div class="profile_img_cmt"><img src="./assets/img/KakaoTalk_20221129_154645668.png"></div>
+											<span>이딴게현실</span>
+											<p>정신차리고 작업이나 해라 이녀석아,,,</p>
+										</div>
+									</li>
+								</ul>
+								
 							</div>
 							</div>
 							<!-- post_tag end -->
@@ -157,5 +216,6 @@
 						
 				<!-- scroll end -->
 				<script src="./assets/js/mouseOverModal.js"></script>
+				<script src="./assets/js/commentList.js"></script>
 </body>
 </html>

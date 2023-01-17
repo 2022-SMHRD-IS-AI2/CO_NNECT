@@ -26,6 +26,7 @@
 	
 	String nick = null;
 	String email = null;
+	
 	String status = null;
 	String skills = null;
 	String programs = null;
@@ -37,7 +38,7 @@
 	ProfileVO ProfileUser = (ProfileVO)session.getAttribute("loginUserProfile");
 	ProfileDAO dao2 = new ProfileDAO();
 	
-	if(exitSession!=null && loginUser!=null && ProfileUser!=null){
+	if(exitSession!=null && loginUser!=null/*  && ProfileUser!=null */){
 		System.out.println("세션이 있다");
 		
 		
@@ -56,12 +57,16 @@
 		System.out.println("자동로그인이라 세션이 없다");
 		// 쿠키 객체 가져오기
 			Cookie[] cookies = request.getCookies();
-		
-		if(cookies!=null){
+		if(loginUser!=null){
+			
+			nick = loginUser.getNick();
+			email = loginUser.getEmail();
+		}
+/* 		if(cookies!=null){
 			System.out.println("쿠키값이 잇음");
 		}else{
 			System.out.println("쿠키값이 없음");
-		}
+		} */
 			System.out.println("1");
 			if(cookies!=null){
 				for(Cookie c : cookies){ // for each 문
@@ -90,6 +95,7 @@
 						email = loginUser.getEmail();
 						
 					}else if(nick==null && email==null){
+						System.out.println("여기냐?");
 						response.sendRedirect("login.jsp");
 					}
 			}

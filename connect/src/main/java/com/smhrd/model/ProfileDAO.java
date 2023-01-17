@@ -45,12 +45,12 @@ public class ProfileDAO {
 	
 	}
 	
-	public ProfileVO selectProfile(String id) {
+	public ProfileVO selectProfileID(String id) {
 		ProfileVO ProfileUser = null;
 		
 		try {
 
-			ProfileUser = sqlSession.selectOne("com.smhrd.model.ProfileDAO.selectProfile", id);
+			ProfileUser = sqlSession.selectOne("com.smhrd.model.ProfileDAO.selectProfileID", id);
 			System.out.println(ProfileUser.getId());	
 			
 		} catch (Exception e) {
@@ -64,4 +64,23 @@ public class ProfileDAO {
 	
 	
 }
+	public ProfileVO selectProfileEMAIL(String email) {
+		ProfileVO ProfileUser = null;
+		
+		try {
+			
+			ProfileUser = sqlSession.selectOne("com.smhrd.model.ProfileDAO.selectProfileEMAIL", email);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return ProfileUser;
+		
+		
+	}
 }

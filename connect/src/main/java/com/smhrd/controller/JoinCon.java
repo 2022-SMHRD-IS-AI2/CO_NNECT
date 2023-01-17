@@ -30,8 +30,8 @@ public class JoinCon extends HttpServlet {
 		String pw = request.getParameter("finalPw");
 		String nick = request.getParameter("nick");
 		
-		String status="현재 직무분야 또는 직업을 설정 해 주세요. ex)학생, 프론트엔드 개발자";
-		String skills="자신의 기술을 설정 해 주세요. ex)웹사이트 개발, 앱 개발";
+		String status="현재 직무분야 또는 직업을 설정 해 주세요.";
+		String skills="자신의 기술을 설정 해 주세요.";
 		String programs="다루는 프로그래밍 언어를 설정 해 주세요.";
 		String introduction="자기소개를 적어주세요.";
 		

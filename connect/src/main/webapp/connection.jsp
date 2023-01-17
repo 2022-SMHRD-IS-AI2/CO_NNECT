@@ -18,20 +18,20 @@
 			</div>
 			<!-- logo end -->
 			<ul class="side_menu green">
-				<li><a href="main.html"><img src="./assets/img/icons in color/menubar/home_gr.png"></a></li>
-				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
-				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
-				<li><a href="#"><img src="./assets/img/icons in color/menubar/setting_gr.png"></a></li>
-				<li><a href="login.html"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li>
+				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home_gr.png"></a></li>
+				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
+				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
+				<li><a href="set_profile.jsp"><img src="./assets/img/icons in color/menubar/setting_gr.png"></a></li>
+				<li><a href="login.jsp"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li>
 			</ul>
 			<!-- side_menu green end -->
 
 			<ul class="side_menu white">
-				<li><a href="main.html"><img src="./assets/img/icons in color/menubar/home.png"></a></li>
-				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/my.png"></a></li>
-				<li><a href="profile.html"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
-				<li><a href="#"><img src="./assets/img/icons in color/menubar/setting.png"></a></li>
-				<li><a href="login.html"><img src="assets/img/icons in color/menubar/exit.png"></a></li>
+				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home.png"></a></li>
+				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my.png"></a></li>
+				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
+				<li><a href="set_profile.jsp"><img src="./assets/img/icons in color/menubar/setting.png"></a></li>
+				<li><a href="login.jsp"><img src="assets/img/icons in color/menubar/exit.png"></a></li>
 			</ul>
 		<!-- side_menu white end -->
 			
@@ -572,7 +572,7 @@
 				<div class="f_wrap fc" id="f_wrap">
 					<div class="dm_text">
 						<div class="txt">
-							<img src="img/chevron-left-solid.svg">
+							<img src="./assets/img/chevron-left-solid.svg">
 						</div>
 						<div class="chatting">
 							<input name="a" placeholder="채팅을 입력하세요">
@@ -625,7 +625,7 @@
 		<!-- r_wrap end -->
 	</div>
 
-	<script src="js/script.js"></script>
+	<script src="./assets/js/script.js"></script>
 
 </body>
 </html>

@@ -122,7 +122,7 @@ String email = loginUser.getEmail();
 			<ul class="side_menu green">
 				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home.png"></a></li>
 				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
-				<li><a href="connection.html"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
+				<li><a href="connectionjsp"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
 				<li><a href="set_profile.jsp"><img src="./assets/img/icons in color/menubar/setting_gr.png"></a></li>
 				<li><a href="login.jsp"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li>
 			</ul>
@@ -131,7 +131,7 @@ String email = loginUser.getEmail();
 			<ul class="side_menu white">
 				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home.png"></a></li>
 				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
-				<li><a href="connection.html"><img src="./assets/img/icons in color/menubar/connections.png"></a></li>
+				<li><a href="connection.jsp"><img src="./assets/img/icons in color/menubar/connections.png"></a></li>
 				<li><a href="set_profile.jsp"><img src="./assets/img/icons in color/menubar/setting.png"></a></li>
 				<li><a href="login.jsp"><img src="./assets/img/icons in color/menubar/exit.png"></a></li>
 			</ul>
