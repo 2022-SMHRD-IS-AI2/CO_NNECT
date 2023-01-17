@@ -55,9 +55,7 @@ public class writePostControl extends HttpServlet {
 		UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 		String id = loginUser.getId();
 		
-		if(id==null) {
-			
-		}
+
 		System.out.println("아이디는 "+id);
 		
 		String text = null;

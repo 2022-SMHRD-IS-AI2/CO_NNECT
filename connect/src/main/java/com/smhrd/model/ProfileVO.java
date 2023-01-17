@@ -30,6 +30,20 @@ public class ProfileVO {
 	}
 
 	
+	
+	
+	public ProfileVO(String id, String status, String skills, String programs, String introduction,
+			String profile_pic) {
+		super();
+		this.id = id;
+		this.status = status;
+		this.skills = skills;
+		this.programs = programs;
+		this.introduction = introduction;
+		this.profile_pic = profile_pic;
+	}
+
+
 	public ProfileVO(String id, String status, String skills, String programs, String introduction, String github,
 			String tistory, String instagram, String website, String facebook, String twitter, String profile_pic) {
 		super();

@@ -35,8 +35,10 @@
 	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 	UserDAO dao = new UserDAO();
 	
-	ProfileVO ProfileUser = (ProfileVO)session.getAttribute("loginUserProfile");
 	ProfileDAO dao2 = new ProfileDAO();
+	
+	
+	ProfileVO ProfileUserSession = (ProfileVO)session.getAttribute("loginUserProfile");
 	
 	if(exitSession!=null && loginUser!=null/*  && ProfileUser!=null */){
 		System.out.println("세션이 있다");
@@ -47,6 +49,8 @@
 		nick = loginUser.getNick();
 		email = loginUser.getEmail();
 		
+		ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+	
 		status = ProfileUser.getStatus();
 		skills = ProfileUser.getSkills();
 		programs = ProfileUser.getPrograms();
@@ -61,6 +65,13 @@
 			
 			nick = loginUser.getNick();
 			email = loginUser.getEmail();
+			
+			ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+			
+			status = ProfileUser.getStatus();
+			skills = ProfileUser.getSkills();
+			programs = ProfileUser.getPrograms();
+			introduction = ProfileUser.getIntroduction();
 		}
 /* 		if(cookies!=null){
 			System.out.println("쿠키값이 잇음");
@@ -82,6 +93,13 @@
 						nick = loginUser.getNick();
 						email = loginUser.getEmail();
 						
+						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+						
+						status = ProfileUser.getStatus();
+						skills = ProfileUser.getSkills();
+						programs = ProfileUser.getPrograms();
+						introduction = ProfileUser.getIntroduction();
+						
 					}else if(c.getName().equals("loginEmail") && c.getValue()!="default"){
 						System.out.println("3");
 						/* System.out.print(c.getValue());*/
@@ -93,6 +111,13 @@
 						
 						nick = loginUser.getNick();
 						email = loginUser.getEmail();
+						
+						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+						
+						status = ProfileUser.getStatus();
+						skills = ProfileUser.getSkills();
+						programs = ProfileUser.getPrograms();
+						introduction = ProfileUser.getIntroduction();
 						
 					}else if(nick==null && email==null){
 						System.out.println("여기냐?");
@@ -126,7 +151,7 @@
 			<ul class="side_menu green">
 				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home_gr.png"></a></li>
 				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my_gr.png"></a></li>
-				<li><a href="connection.html"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
+				<li><a href="connection.jsp"><img src="./assets/img/icons in color/menubar/connections_gr.png"></a></li>
 				<li><a href="set_profile.jsp"><img src="./assets/img/icons in color/menubar/setting_gr.png"></a></li>
 				<!-- <li><a href="#"><img src="./assets/img/icons in color/menubar/exit_gr.png"></a></li> -->
 			</ul>
@@ -135,7 +160,7 @@
 			<ul class="side_menu white">
 				<li><a href="main.jsp"><img src="./assets/img/icons in color/menubar/home_gr.png"></a></li>
 				<li><a href="profile.jsp"><img src="./assets/img/icons in color/menubar/my.png"></a></li>
-				<li><a href="connection.html"><img src="./assets/img/icons in color/menubar/connections.png"></a></li>
+				<li><a href="connection.jsp"><img src="./assets/img/icons in color/menubar/connections.png"></a></li>
 				<li><a href="set_profile.jsp"><img src="./assets/img/icons in color/menubar/setting.png"></a></li>
 				<li id="logout"><a href="#"><img src="./assets/img/icons in color/menubar/exit.png"></a></li>
 			</ul>

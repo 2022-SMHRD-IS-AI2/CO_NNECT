@@ -36,10 +36,11 @@ String email = loginUser.getEmail();
 	String skills = null;
 	String programs = null;
 	String introduction = null;
+	String profile_pic = null;
 	
 	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 	UserDAO dao = new UserDAO();
-	ProfileVO ProfileUser = (ProfileVO)session.getAttribute("loginUserProfile");
+	ProfileVO ProfileUserSession = (ProfileVO)session.getAttribute("loginUserProfile");
 	ProfileDAO dao2 = new ProfileDAO();
 	
 	if(exitSession!=null && loginUser!=null){
@@ -51,13 +52,15 @@ String email = loginUser.getEmail();
 		nick = loginUser.getNick();
 		email = loginUser.getEmail();
 		
+		ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+		
 		status = ProfileUser.getStatus();
 		skills = ProfileUser.getSkills();
 		programs = ProfileUser.getPrograms();
 		introduction = ProfileUser.getIntroduction();
-		
+		profile_pic = ProfileUser.getProfile_pic();
 	}
-	else if(exitSession == null || loginUser == null){
+	else if(exitSession == null || loginUser == null || ProfileUserSession==null){
 		System.out.println("자동로그인이라 세션이 없다");
 		// 쿠키 객체 가져오기
 			Cookie[] cookies = request.getCookies();
@@ -82,6 +85,14 @@ String email = loginUser.getEmail();
 						nick = loginUser.getNick();
 						email = loginUser.getEmail();
 						
+						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+						
+						status = ProfileUser.getStatus();
+						skills = ProfileUser.getSkills();
+						programs = ProfileUser.getPrograms();
+						introduction = ProfileUser.getIntroduction();
+						profile_pic = ProfileUser.getProfile_pic();
+						
 					}else if(c.getName().equals("loginEmail") && c.getValue()!="default"){
 						System.out.println("3");
 						/* System.out.print(c.getValue());*/
@@ -93,6 +104,14 @@ String email = loginUser.getEmail();
 						
 						nick = loginUser.getNick();
 						email = loginUser.getEmail();
+						
+						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+						
+						status = ProfileUser.getStatus();
+						skills = ProfileUser.getSkills();
+						programs = ProfileUser.getPrograms();
+						introduction = ProfileUser.getIntroduction();
+						profile_pic = ProfileUser.getProfile_pic();
 						
 					}else if(nick==null && email==null){
 						response.sendRedirect("login.jsp");
@@ -111,8 +130,13 @@ String email = loginUser.getEmail();
 					response.sendRedirect("login.jsp");
 				}
 	
-
+	
+	String path = (String)request.getAttribute("profilePicPath");
+	String path2 = path+"\\";
+	String realPath = path2+profile_pic;
+	System.out.println(path2+profile_pic);
 	%>
+	
 	<div class="wrap fc">
 		<div class="l_wrap">
 			<div class="logo">
@@ -173,7 +197,9 @@ String email = loginUser.getEmail();
 
 			<div class="contents fc">
 				<div class="c_block fb">
-					<div class="c_profile"></div>
+					<div class="c_profile">
+					<img src="./profilePic/<%=profile_pic%>">
+					</div>
 					<!-- c_profile end -->
 					<div class="code_text fb">
 						<div id="previewArea">
@@ -217,7 +243,11 @@ String email = loginUser.getEmail();
 		<div class="r_wrap">
 			<div class="profile_wrap fc">
 				<div class="profile_img">
-					<img src="">프로필
+				<%if(profile_pic!=null){ %>
+					<img src="./profilePic/<%=profile_pic%>">
+					<%} else{%>
+					<img alt="" src="">
+					<%} %>
 				</div>
 				<div class="profile_info fc">
 					<div class="info fc">

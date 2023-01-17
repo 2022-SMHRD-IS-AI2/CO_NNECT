@@ -21,6 +21,7 @@
 </head>
 <body>
 	<%
+			ProfileDAO dao2 = new ProfileDAO();
 		// 쿠키 객체 가져오기
 		Cookie[] cookies = request.getCookies();
 	if(cookies!=null){
@@ -30,11 +31,15 @@
 			/* System.out.print(c.getValue()); */
 			
 			UserDAO dao = new UserDAO();
-			ProfileDAO dao2 = new ProfileDAO();
 			
 			UserVO loginUser = dao.setSessionID(c.getValue());
 			session.setAttribute("loginUser", loginUser);
 			
+			String id = (String)loginUser.getId();
+			
+			ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(id);
+			
+			session.setAttribute("loginUserProfile", ProfileUser);
 			
 			response.sendRedirect("main.jsp");
 			
@@ -44,6 +49,12 @@
 			UserDAO dao = new UserDAO();
 			UserVO loginUser = dao.setSessionEmail(c.getValue());
 			session.setAttribute("loginUser", loginUser);
+			
+			String email = (String)loginUser.getEmail();
+			
+			ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+			
+			session.setAttribute("loginUserProfile", ProfileUser);
 			
 			response.sendRedirect("main.jsp");
 		}

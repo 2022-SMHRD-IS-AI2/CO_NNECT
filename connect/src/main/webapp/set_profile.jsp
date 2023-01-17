@@ -71,7 +71,7 @@ String email = loginUser.getEmail();
 		<div class="s_us fc">
 	
 	
-			<form action="form_result.jsp" method="post" id="setProfileForm" class="fc" enctype="multipart/form-data">
+			<form action="ProfileController" method="post" id="setProfileForm" class="fc" enctype="multipart/form-data">
 				<div class="set_profile fb">
 
 
@@ -86,7 +86,7 @@ String email = loginUser.getEmail();
 						<div class="upload">
 						<button type="button" class = "btn-warning">
 							<i class = "file-upload"></i>프로필 사진 변경하기
-							<input type="file" name ="file">
+							<input type="file" name ="file" id="photo">
 							</button>
 						</div>
 					
@@ -109,17 +109,22 @@ String email = loginUser.getEmail();
 					<p>분야</p>
 					<input type="text" name="set_devel" placeholder="Front End Developer">
 				</div>
+				
+				<div class="set_skill fb">
+					<p>기술</p>
+					<input type="text" name="set_skill" placeholder="앱 개발 etc...">
+				</div>
+
+
+				<div class="set_skill fb">
+					<p>언어</p>
+					<input type="text" name="set_language" placeholder="#HTML #CSS #JS #PYTHON etc..">
+				</div>
 
 				<div class="set_intro fb">
 					<p>소개</p>
 					<textarea name="set_intro"></textarea>
 				</div>
-
-				<div class="set_skill fb">
-					<p>언어</p>
-					<input type="text" name="set_skill" placeholder="#HTML #CSS #JS #PYTHON etc..">
-				</div>
-
 
 
 				<div class="set_btn fb">
@@ -140,5 +145,6 @@ String email = loginUser.getEmail();
 
 	<script src="./assets/js/login_join.js"></script>
 	<script src="./assets/js/profile_pic_preview.js"></script>
+	<script src="./assets/js/ProfilePicUpload.js"></script>
 </body>
 </html>

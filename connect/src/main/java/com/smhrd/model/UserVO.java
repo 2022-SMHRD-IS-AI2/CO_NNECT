@@ -20,6 +20,12 @@ public class UserVO {
 		this.email = email;
 	}
 	
+	public UserVO(String nick) {
+		super();
+		this.nick = nick;
+		
+	}
+	
 	public UserVO(String id, String pw, String nick, String email,Timestamp joindate,String type ) {
 		super();
 		this.id = id;

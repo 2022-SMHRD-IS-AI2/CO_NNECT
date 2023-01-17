@@ -95,5 +95,13 @@ public List<PostVO> showTimelineOnlyMe(String id) {
 	
 	return vo;
 }
+
+public String getMyNick(String id) {
+	
+	String nick = sqlSession.selectOne("com.smhrd.model.PostDAO.getMyNick",id);
+	sqlSession.close();
+	
+	return nick;
+}
 	
 }

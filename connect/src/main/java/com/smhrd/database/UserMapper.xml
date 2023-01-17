@@ -50,4 +50,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from t_member where mem_id=#{id}
 	</select> 
 
+
+	<update id="updateNick" parameterType="java.util.HashMap">
+	update T_MEMBER set MEM_NICK=#{userNick} where MEM_ID=#{userId}
+	
+	</update>
 </mapper>

@@ -83,4 +83,70 @@ public class ProfileDAO {
 		
 		
 	}
+	
+	
+	public int updateProfilePic(ProfileVO vo) {
+		int cnt=0;
+		try {
+		cnt = sqlSession.insert("com.smhrd.model.ProfileDAO.updateProfilePic", vo);
+		
+		if(cnt >0) {
+			// cnt에 값이 담겼을때 commit
+			sqlSession.commit();
+		}else {
+			// 입력값이 들어오지 않았을때
+			sqlSession.rollback();
+		}
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}finally {
+		
+		sqlSession.close();
+		// 연결끊기
+	}
+		return cnt;
+	}
+	
+	
+	public int updateProfile(ProfileVO vo) {
+		int cnt=0;
+		try {
+			cnt = sqlSession.insert("com.smhrd.model.ProfileDAO.updateProfile", vo);
+			
+			if(cnt >0) {
+				// cnt에 값이 담겼을때 commit
+				sqlSession.commit();
+			}else {
+				// 입력값이 들어오지 않았을때
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			
+			sqlSession.close();
+			// 연결끊기
+		}
+		return cnt;
+	}
+	
+public Boolean fileIsOk(String inputE) {
+		
+		
+		
+		Boolean checkE=false;
+		
+		if(inputE!=null) {
+			checkE=true;
+		}
+		
+		return checkE;
+		
+	}
+	
+	
 }

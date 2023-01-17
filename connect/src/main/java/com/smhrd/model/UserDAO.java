@@ -1,5 +1,8 @@
 package com.smhrd.model;
 
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -152,6 +155,31 @@ public class UserDAO {
 		return User;
 		
 	}
+	
+	public int updateNick(Map<String, String> map) {
+		int cnt=0;
+		try {
+			cnt = sqlSession.update("com.smhrd.model.UserDAO.updateNick",map);
+			
+			if(cnt >0) {
+				// cnt에 값이 담겼을때 commit
+				sqlSession.commit();
+			}else {
+				// 입력값이 들어오지 않았을때
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			
+			sqlSession.close();
+			// 연결끊기
+		}
+		return cnt;
+	}
+
 	
 	
 
