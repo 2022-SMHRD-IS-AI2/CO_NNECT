@@ -11,6 +11,8 @@
 <%@page import="com.smhrd.model.PostDAO" %>
 <%@page import="com.smhrd.model.ProfileVO" %>
 <%@page import="com.smhrd.model.ProfileDAO" %>
+<%@page import="com.smhrd.model.CommentVO" %>
+<%@page import="com.smhrd.model.CommentDAO" %>
 
 <!DOCTYPE html>
 <html>
@@ -58,13 +60,13 @@
 		
 		/* System.out.println("타임라인페이지 세션확인 : "+id); */
 		
-		ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+		/* ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email); */
 		
-		status = ProfileUser.getStatus();
-		skills = ProfileUser.getSkills();
-		programs = ProfileUser.getPrograms();
-		introduction = ProfileUser.getIntroduction();
-		profile_pic = ProfileUser.getProfile_pic();
+		status = ProfileUserSession.getStatus();
+		skills = ProfileUserSession.getSkills();
+		programs = ProfileUserSession.getPrograms();
+		introduction = ProfileUserSession.getIntroduction();
+		profile_pic = ProfileUserSession.getProfile_pic();
 		
 		/* 작성글을 리스트 형식으로 싹 가져오기 */
 		List<PostVO> vo = new PostDAO().showTimeline();
@@ -84,18 +86,20 @@
 		String path = (String)request.getAttribute("profilePicPath");
 		String path2 = path+"\\";
 		String realPath = path2+profile_pic;
-		System.out.println("진짜경로"+path2+profile_pic);
-	
+		
+		/* session.setAttribute("PostInfo", vo); */
 	%>
 				
 					<div class="scroll">
 					
 					<% if(vo!=null){
             		for(int i=0;i<vo.size();i++){
-            		
+            			
             			String textContent = vo.get(i).getContent() ;
             			/* String postWriter = vo.get(i).getId(); */
             			int num = (vo.get(i).getSeq()).intValue();
+            			
+            			List<CommentVO> cmtvo = new CommentDAO().selectCmt(num);
             			
             			String wrtierid = new PostDAO().whoIsWriter(num);
             			String postWriter = new PostDAO().getMyNick(wrtierid);
@@ -148,7 +152,7 @@
 								</ul>
 							</div>
 							<!-- post_tag end -->
-													<form action="">
+							<form action="commentController" method="post">
 								<div class="pimgNick2">
 									<div class="profile_img_cmt2">
 									<img src="./profilePic/<%=profile_pic%>">
@@ -156,27 +160,37 @@
 									<span><%=loginNick %></span>
 									
 										<textarea name="commentText" id="commentText"></textarea>
-										
+										<input type="hidden" name="seq" value="<%=num%>">
+										<input type="submit">
 									</div>
 								</form>
-								
 							<div class="commentArea">
-								
+								<%-- <jsp:include page="./comment.jsp" /> --%>
 								<ul class="commentUl">
+							<% if(cmtvo!=null){
+            			for(int t=0;t<cmtvo.size();t++){
+            				String cmtid = cmtvo.get(t).getMem_id();
+            				String cmtProfilePic = new ProfileDAO().getProfilePic(cmtid);
+            				String cmtNick = new UserDAO().selectNick(cmtid);
+            			%>	
 									<li class="commentList">
 										<div class="pimgNick">
-											<div class="profile_img_cmt"><img src="./assets/img/652583_650587_1823.jpg"></div>
-											<span>사서(닉네임)</span>
-											<p>댓글 내용입니다 아 작업하기 존나 싫다 진짜 이게 ㅎ현실임?</p>
+											<div class="profile_img_cmt"><img src="./profilePic/<%=cmtProfilePic%>"></div>
+											<span><%=cmtNick %></span>
+											<p><%=cmtvo.get(t).getCmt_content() %></p>
 										</div>
 									</li>
-									<li class="commentList">
+									<%}}else{%>
+
+										<li class="commentList">
 										<div class="pimgNick">
 											<div class="profile_img_cmt"><img src="./assets/img/KakaoTalk_20221129_154645668.png"></div>
-											<span>이딴게현실</span>
-											<p>정신차리고 작업이나 해라 이녀석아,,,</p>
+											<span>작성자</span>
+											<p>댓글이 없습니다. 첫번째 댓글을 남겨보세요.</p>
 										</div>
 									</li>
+	
+									<%} %>
 								</ul>
 								
 							</div>
@@ -213,33 +227,45 @@
 									<li><img src="./assets/img/scrap.png"></li>
 								</ul>
 							</div>
-														<form action="">
+															<form action="commentController" method="post">
 								<div class="pimgNick2">
-									<div class="profile_img_cmt2"><img src="./profilePic/<%=profile_pic%>"></div>
+									<div class="profile_img_cmt2">
+									<img src="./profilePic/<%=profile_pic%>">
+									</div>
 									<span><%=loginNick %></span>
 									
-										<textarea name="" id=""></textarea>
-										
+										<textarea name="commentText" id="commentText"></textarea>
+										<input type="hidden" name="seq" value="<%=num%>">
+										<input type="submit">
 									</div>
 								</form>
-								
 							<div class="commentArea">
-								
+								<%-- <jsp:include page="./comment.jsp" /> --%>
 								<ul class="commentUl">
+							<% if(cmtvo!=null){
+            			for(int t=0;t<cmtvo.size();t++){
+            				String cmtid = cmtvo.get(t).getMem_id();
+            				String cmtProfilePic = new ProfileDAO().getProfilePic(cmtid);
+            				String cmtNick = new UserDAO().selectNick(cmtid);
+            			%>	
 									<li class="commentList">
 										<div class="pimgNick">
-											<div class="profile_img_cmt"><img src="./assets/img/652583_650587_1823.jpg"></div>
-											<span>사서(닉네임)</span>
-											<p>댓글 내용입니다 아 작업하기 존나 싫다 진짜 이게 ㅎ현실임?</p>
+											<div class="profile_img_cmt"><img src="./profilePic/<%=cmtProfilePic%>"></div>
+											<span><%=cmtNick %></span>
+											<p><%=cmtvo.get(t).getCmt_content() %></p>
 										</div>
 									</li>
-									<li class="commentList">
+									<%}}else{%>
+
+										<li class="commentList">
 										<div class="pimgNick">
 											<div class="profile_img_cmt"><img src="./assets/img/KakaoTalk_20221129_154645668.png"></div>
-											<span>이딴게현실</span>
-											<p>정신차리고 작업이나 해라 이녀석아,,,</p>
+											<span>작성자</span>
+											<p>댓글이 없습니다. 첫번째 댓글을 남겨보세요.</p>
 										</div>
 									</li>
+	
+									<%} %>
 								</ul>
 								
 							</div>

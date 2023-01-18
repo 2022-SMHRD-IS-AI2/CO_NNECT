@@ -218,12 +218,7 @@ String email = loginUser.getEmail();
 					
 					<div class ="attach_li"><img src="./assets/img/icons/image-regular.svg"><input type="file" id="photo" accept=".jpg,.jpeg,.png,.gif" name="Photo"><span>Photo</span></div>
                <div class ="attach_li"><img src="./assets/img/icons/video-solid.svg"><input type="file" id="video" accept="video/*" name="Video"><span>Video</span></div>
-               <div class ="attach_li"><img src="./assets/img/icons/code-solid.svg"><select name="score" id="select-id">
-  <option value="Javascript">HTML/CSS/JS</option>
-  <option value="B">B</option>
-  <option value="C">C</option>
-  <option value="D">D</option>
-</select><span>Code</span></div>
+               <div class ="attach_li"><img src="./assets/img/icons/code-solid.svg"><span>Code</span></div>
  
                <div class ="post_ds"><input type="button"  value="삭제" id="deleteFile" onclick="delFile(this)"></div>
                <div class ="post_ds"><input type="submit"  alt="제출"></div> 

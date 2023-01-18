@@ -180,6 +180,25 @@ public class UserDAO {
 		return cnt;
 	}
 
+	public String selectNick(String id) {
+		
+			String nick = null;
+		
+		try {
+
+				nick = sqlSession.selectOne("com.smhrd.model.UserDAO.selectNick", id);
+				
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return nick;
+		
+	}
 	
 	
 

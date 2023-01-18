@@ -1,5 +1,6 @@
 package com.smhrd.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -110,6 +111,14 @@ public String whoIsWriter(int seq) {
 	sqlSession.close();
 	
 	return id;
+}
+
+public BigDecimal PostNumber(String id) {
+	
+	BigDecimal b_seq = sqlSession.selectOne("com.smhrd.model.PostDAO.PostNumber",id);
+	sqlSession.close();
+	
+	return b_seq;
 }
 	
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.model.CommentDAO">
+
+	<insert id="insertCmt" parameterType="com.smhrd.model.CommentVO">
+	insert into t_comment values(t_comment_seq.nextval,#{b_seq},#{cmt_content},sysdate, #{mem_id})
+	
+	</insert>
+	
+	<!-- <insert id="uploadImg" parameterType="com.smhrd.model.PostVO">
+	insert into t_board(B_SEQ, B_CONTENT, B_FILE, B_REGDT, MEM_ID, B_CNT, B_LIKES) values (t_board_seq.nextval, #{content},#{filename},sysdate, #{id}, 0,0)
+	
+	</insert>
+	
+	<select id="showTimeline" resultType="com.smhrd.model.PostVO">
+   		select B_SEQ as seq, B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board order by b_seq DESC
+	</select>
+	
+	<select id="showTimelineOnlyMe" resultType="com.smhrd.model.PostVO" parameterType="String">
+   		select B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board where MEM_ID=#{id} order by b_seq DESC
+	</select>
+	
+	<select id="getMyNick" resultType="String" parameterType="String">
+   			select mem_nick from t_member inner join t_board on t_member.mem_id = t_board.mem_id where t_member.mem_id =#{id} and rownum <![CDATA[<]]> 2
+	</select>-->
+	
+	<select id="selectCmt" resultType="com.smhrd.model.CommentVO" parameterType="int">
+   			select * from t_comment where b_seq=#{b_seq}
+	</select> 
+	
+
+</mapper>

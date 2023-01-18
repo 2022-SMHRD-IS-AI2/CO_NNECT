@@ -49,6 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="setSessionI" resultType="com.smhrd.model.UserVO" parameterType="String">
 	select * from t_member where mem_id=#{id}
 	</select> 
+	
+	<select id="selectNick" resultType="String" parameterType="String">
+	select mem_nick from t_member where mem_id =#{cmtid, jdbcType=VARCHAR} and rownum <![CDATA[<]]> 2
+	</select> 
 
 
 	<update id="updateNick" parameterType="java.util.HashMap">

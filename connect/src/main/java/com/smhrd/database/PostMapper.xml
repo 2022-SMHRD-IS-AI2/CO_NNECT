@@ -16,11 +16,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="showTimeline" resultType="com.smhrd.model.PostVO">
-   		select B_SEQ as seq, B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board order by b_seq DESC
+   		select  B_SEQ as seq,B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board order by b_seq DESC
 	</select>
 	
 	<select id="showTimelineOnlyMe" resultType="com.smhrd.model.PostVO" parameterType="String">
-   		select B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board where MEM_ID=#{id} order by b_seq DESC
+   		select B_SEQ as seq, B_CONTENT as content, B_FILE as filename, MEM_ID as id, HASHTAG as hashtag, B_LIKES as likes from t_board where MEM_ID=#{id} order by b_seq DESC
 	</select>
 	
 	<select id="getMyNick" resultType="String" parameterType="String">
@@ -29,6 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="whoIsWriter" resultType="String" parameterType="int">
    			select mem_id from t_board where b_seq=#{seq}
+	</select>
+	
+	<select id="PostNumber" resultType="BigDecimal" parameterType="String">
+   			select b_seq from t_board where mem_id=#{id} and rownum <![CDATA[<]]> 2
 	</select>
 	
 

@@ -64,6 +64,12 @@
   	<description></description>
   	<servlet-class>com.smhrd.controller.ProfilePicControl</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>commentController</servlet-name>
+  	<display-name>commentController</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.postController.commentController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
   	<url-pattern>/JoinCon</url-pattern>
@@ -103,5 +109,9 @@
   <servlet-mapping>
   	<servlet-name>ProfilePicControl</servlet-name>
   	<url-pattern>/ProfilePicControl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>commentController</servlet-name>
+  	<url-pattern>/commentController</url-pattern>
   </servlet-mapping>
 </web-app>

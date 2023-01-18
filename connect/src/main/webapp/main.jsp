@@ -1,12 +1,13 @@
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import="com.smhrd.model.UserVO" %>
-    <%@page import="com.smhrd.model.UserDAO" %>
-    <%@page import="com.smhrd.model.PostVO" %>
+<%@page import="com.smhrd.model.UserVO" %>
+<%@page import="com.smhrd.model.UserDAO" %>
+<%@page import="com.smhrd.model.PostVO" %>
 <%@page import="com.smhrd.model.PostDAO" %>
-    <%@page import="com.smhrd.model.ProfileVO" %>
-    <%@page import="com.smhrd.model.ProfileDAO" %>
+<%@page import="com.smhrd.model.ProfileVO" %>
+<%@page import="com.smhrd.model.ProfileDAO" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -38,9 +39,9 @@
 	UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 	UserDAO dao = new UserDAO();
 	
-	ProfileVO ProfileUserSession = (ProfileVO)session.getAttribute("loginUserProfile");
+/* 	ProfileVO ProfileUserSession = (ProfileVO)session.getAttribute("loginUserProfile"); */
 	ProfileDAO dao2 = new ProfileDAO();
-
+	ProfileVO ProfileUser = null;
 	
 	if(exitSession!=null && loginUser!=null/*  && ProfileUser!=null */){
 		System.out.println("세션이 있다");
@@ -50,8 +51,9 @@
 		
 		nick = new PostDAO().getMyNick(id);
 		
-		ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
-	
+		ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+		
+		
 		status = ProfileUser.getStatus();
 		skills = ProfileUser.getSkills();
 		programs = ProfileUser.getPrograms();
@@ -68,7 +70,7 @@
 			nick = loginUser.getId();
 			email = loginUser.getEmail();
 			
-			ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+			ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 			
 			status = ProfileUser.getStatus();
 			skills = ProfileUser.getSkills();
@@ -96,8 +98,8 @@
 						id = loginUser.getId();
 						email = loginUser.getEmail();
 						
-						nick = new PostDAO().getMyNick(id);
-						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+						 nick = new PostDAO().getMyNick(id);
+						ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 						
 						status = ProfileUser.getStatus();
 						skills = ProfileUser.getSkills();
@@ -106,10 +108,6 @@
 						profile_pic = ProfileUser.getProfile_pic();
 						
 					}else if(c.getName().equals("loginEmail") && c.getValue()!="default"){
-						System.out.println("3");
-						/* System.out.print(c.getValue());*/
-						System.out.println("이메일 쿠키 존재");
-						
 						
 						loginUser = dao.setSessionEmail(c.getValue());
 						session.setAttribute("loginUser", loginUser);
@@ -118,7 +116,7 @@
 						email = loginUser.getEmail();
 						
 						nick = new PostDAO().getMyNick(id);
-						ProfileVO ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
+						ProfileUser = (ProfileVO)dao2.selectProfileEMAIL(email);
 						
 						status = ProfileUser.getStatus();
 						skills = ProfileUser.getSkills();
@@ -127,14 +125,14 @@
 						profile_pic = ProfileUser.getProfile_pic();
 						
 					}else if(nick==null && email==null){
-						System.out.println("여기냐?");
+						
 						response.sendRedirect("login.jsp");
 					}
 			}
 			}
 				else if(cookies==null){
 					System.out.println("4");
-						System.out.println("쿠키도 세션도 없음");
+						
 						response.sendRedirect("login.jsp");
 					}/* else{
 						response.sendRedirect("login.jsp");
@@ -144,6 +142,7 @@
 					response.sendRedirect("login.jsp");
 				}
 	
+		session.setAttribute("loginUserProfile", ProfileUser);
 
 	%>
 	
