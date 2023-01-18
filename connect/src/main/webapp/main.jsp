@@ -187,8 +187,19 @@
 					<div class="c_profile">
 					<img src="./profilePic/<%=profile_pic%>">
 					</div>
-					<!-- c_profile end -->
-					<div class="code_text fb">
+					<!-- c_profile end 코드블럭수정-->
+					
+					
+					<div class="code_text">
+					<div class="post_code none">
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html" data-slug-hash="dyjVByv" data-editable="true" data-user="ImperetilliDeus" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/ImperetilliDeus/pen/dyjVByv">
+  Untitled</a> by 하검 (<a href="https://codepen.io/ImperetilliDeus">@ImperetilliDeus</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
+
+					 </div>
 						<div id="previewArea">
 							<div id="preview"></div>
 						</div>
@@ -329,6 +340,7 @@
 	<script src="./assets/js/logout.js"></script>
 	<script src="./assets/js/fileUpload.js"></script>
 	<script src="./assets/js/imgpreview.js"></script>
+	<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 </body>
 </html>
